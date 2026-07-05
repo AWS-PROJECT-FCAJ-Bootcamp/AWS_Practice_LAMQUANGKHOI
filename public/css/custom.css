@@ -1,0 +1,41 @@
+body,
+#body,
+#body-inner,
+#sidebar,
+#chapter,
+#chapter h1,
+#chapter h2,
+#chapter h3,
+#chapter h4,
+#chapter h5,
+#chapter h6,
+#body h1,
+#body h2,
+#body h3,
+#body h4,
+#body h5,
+#body h6,
+p,
+li,
+td,
+th,
+table,
+input,
+select,
+textarea,
+button {
+    font-family: "Times New Roman", Times, serif !important;
+}
+
+body {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+#sidebar {
+    font-size: 17px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}

@@ -1,0 +1,7 @@
+<a id="logo" href='{{ cond (and (ne .Site.Params.landingPageURL nil) (gt (len .Site.Languages) 1)) .Site.Params.landingPageURL "/" }}'>
+  {{ with .Site.Params.logo }}
+    <img src="{{ . | relURL }}" alt="logo">
+  {{ else }}
+    {{ with .Site.Params.titleSeparator }}{{ else }}{{ end }}
+  {{ end }}
+</a>

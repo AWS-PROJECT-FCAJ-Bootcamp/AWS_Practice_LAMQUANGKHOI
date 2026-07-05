@@ -1,0 +1,15 @@
+WARN  deprecated: project config key languages.vi.languageName was deprecated in Hugo v0.158.0 and will be removed in a future release. Use languages.vi.label instead.
+WARN  deprecated: project config key languages.en.languageName was deprecated in Hugo v0.158.0 and will be removed in a future release. Use languages.en.label instead.
+Start building sites GǪ 
+hugo v0.163.3-4d22555aebf458d5d150500c9ac4bee5b24cf0d3+extended windows/amd64 BuildDate=2026-06-18T16:18:24Z VendorInfo=gohugoio
+
+INFO  build:  step process substep collect files 74 files_total 74 pagesources_total 74 resourcesources_total 0 duration 59.031ms
+INFO  build:  step process duration 62.0532ms
+INFO  build:  step assemble duration 59.6702ms
+INFO  build:  step render pages 14 content 0 duration 224.0887ms
+INFO  build:  step render deferred count 0 duration 0s
+INFO  build:  step postProcess duration 0s
+INFO  build:  duration 352.7995ms
+INFO  static: syncing static files to \ duration 452.0736ms
+Total in 649 ms
+ERROR error building site: render: [en v1.0.0 guest] failed to render pages: render of "D:/AWS_Practice_LAMQUANGKHOI/content/1-Worklog/1.10-Week10/_index.md" failed: "D:\AWS_Practice_LAMQUANGKHOI\themes\hugo-theme-learn\layouts\_default\list.html:1:3": execute of template failed: template: list.html:1:3: executing "list.html" at <partial "header.html" .>: error calling partial: "D:\AWS_Practice_LAMQUANGKHOI\themes\hugo-theme-learn\layouts\partials\header.html:44:7": execute of template failed: template: _partials/header.html:44:7: executing "_partials/header.html" at <partial "menu.html" .>: error calling partial: "D:\AWS_Practice_LAMQUANGKHOI\themes\hugo-theme-learn\layouts\partials\menu.html:51:18": execute of template failed: template: _partials/menu.html:51:18: executing "_partials/menu.html" at <.Site.IsMultiLingual>: can't evaluate field IsMultiLingual in type page.Site
