@@ -2,6 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/1-worklog/1.1-week1/</loc>
+    <lastmod>2026-06-23T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.1-week1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.1-week1/"
+                />
+  </url><url>
     <loc>http://localhost:1313/3-blogsposted/3.1-blog1/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -119,17 +132,17 @@
                 href="http://localhost:1313/vi/5-workshop/5.4-s3-onprem/5.4.1-prepare/"
                 />
   </url><url>
-    <loc>http://localhost:1313/1-worklog/1.1-week1/</loc>
+    <loc>http://localhost:1313/1-worklog/1.1-week1/1_index/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/1-worklog/1.1-week1/"
+                href="http://localhost:1313/1-worklog/1.1-week1/1_index/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/1-worklog/1.1-week1/"
+                href="http://localhost:1313/vi/1-worklog/1.1-week1/1_index/"
                 />
   </url><url>
     <loc>http://localhost:1313/1-worklog/1.2-week2/</loc>

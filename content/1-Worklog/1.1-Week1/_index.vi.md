@@ -1,59 +1,42 @@
 ---
 title: "Worklog Tuần 1"
-date: 2024-01-01
+date: 2026-06-23
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 1:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Làm quen với các dịch vụ AWS nền tảng: IAM, Budget, VPC, EC2 và CloudWatch.
+* Hiểu các thành phần mạng cơ bản trong AWS, bao gồm subnet, Internet Gateway, NAT Gateway, route table, CIDR và Elastic IP.
+* Thực hành khởi tạo, kết nối và giám sát EC2 instance.
+* Theo dõi chi phí sử dụng AWS và thiết lập cảnh báo ngân sách.
+* Khảo sát các dịch vụ cần thiết cho ý tưởng đồ án tài chính trên AWS.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Các công việc đã triển khai trong tuần này:
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 3 | - Kích hoạt tài khoản AWS có credit thử nghiệm.<br>- Tạo và thử nghiệm các IAM user với quyền quản trị và vận hành.<br>- Bắt đầu tìm hiểu VPC, subnet, NAT Gateway, Internet Gateway, route table và CIDR. | 23/06/2026 | 23/06/2026 | <https://cloudjourney.awsstudygroup.com/> <https://000002.awsstudygroup.com/vi/1-introduction/> |
+| 4 | - Tiếp tục học VPC và EC2.<br>- Thực hành cấu hình VPC, Internet Gateway, NAT Gateway và Elastic IP để EC2 có thể truy cập Internet.<br>- Kết nối từ xa thành công đến EC2.<br>- Thử nghiệm chuyển IAM role cho tài khoản vận hành. | 24/06/2026 | 24/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Kiểm tra các khoản chi phí phát sinh khi làm lab.<br>- Tạo cảnh báo ngân sách không chi tiêu và ngân sách giới hạn cho giai đoạn học lab.<br>- Thử nghiệm VPC endpoint, NAT Gateway, Elastic IP và đường đi mạng của instance.<br>- Sử dụng Session Manager để truy cập instance không cần SSH.<br>- Làm quen với CloudWatch Monitoring. | 25/06/2026 | 25/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Hoàn thiện thêm cấu hình EC2.<br>- Phân biệt vai trò của Internet Gateway, NAT Gateway và route table.<br>- Thử nghiệm mô hình Site-to-Site VPN giữa một EC2 mô phỏng phía khách hàng và private network.<br>- Ghi nhận lỗi kết nối VPN mới chỉ hoạt động một chiều và khảo sát Libreswan thay cho thư viện cũ. | 26/06/2026 | 26/06/2026 | <https://docs.aws.amazon.com/vpn/> |
+| 7 | - Không làm việc, học tập liên quan đến AWS | 27/06/2026 | 27/06/2026 | |
+| CN | - Không làm việc, học tập liên quan đến AWS | 28/06/2026 | 28/06/2026 | |
+| 2 | - Tiếp tục bài học EC2 và chuẩn bị tìm hiểu RDS.<br>- Khởi chạy Windows EC2 từ Microsoft AMI.<br>- Ghi nhận sự cố không thể tạo lại mật khẩu để truy cập instance.<br>- Đánh giá tiến độ học EC2 đạt khoảng 40%.<br>- Chuẩn bị xác định đề tài nghiên cứu và tài liệu trình bày cho nhóm. | 29/06/2026 | 29/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 1:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hiểu được vai trò cơ bản của IAM user, IAM role và nguyên tắc phân quyền khi sử dụng tài khoản AWS.
+* Thực hành thành công việc xây dựng kết nối Internet cho EC2 thông qua VPC, public subnet, Internet Gateway, route table và Elastic IP.
+* Hiểu rõ hơn sự khác nhau giữa các thành phần mạng:
+  * **Internet Gateway:** Cho phép tài nguyên trong public subnet giao tiếp hai chiều với Internet khi được cấu hình route và địa chỉ public phù hợp.
+  * **NAT Gateway:** Cho phép tài nguyên trong private subnet truy cập ra Internet mà không mở kết nối chủ động từ Internet vào.
+  * **Route table:** Quy định tuyến đường mà lưu lượng mạng trong subnet sẽ sử dụng.
+* Truy cập được EC2 bằng phương thức remote thông thường và AWS Systems Manager Session Manager.
+* Thử nghiệm CloudWatch để theo dõi trạng thái và chỉ số hoạt động của EC2.
+* Thiết lập các cảnh báo ngân sách để kiểm soát chi phí khi thực hành lab.
+* Thử nghiệm Site-to-Site VPN và xác định được vấn đề kết nối một chiều cần tiếp tục xử lý.
+* Ghi nhận sự cố với Windows EC2 AMI và đưa vào danh sách vấn đề cần nghiên cứu thêm.
+* Xây dựng danh sách dịch vụ cần tìm hiểu cho đồ án, gồm S3, RDS, DynamoDB, Lambda, CloudFront, ECS, SQS, SNS, Cognito, CDK, WAF, KMS, Macie và Amplify.
