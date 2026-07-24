@@ -1,57 +1,32 @@
 ---
 title: "Week 4 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-07-13
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 4 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Prioritize the EIDT 2026 conference paper deadline from July 13 to July 16.
+* Temporarily pause AWS study and team coordination while completing the paper submission work.
+* Preserve a clear list of project activities to resume after the conference deadline.
+* Prepare high-level reference materials and define the infrastructure problem more precisely.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks carried out this week:
 
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| Mon | - Temporarily paused additional AWS study and team coordination to focus on the EIDT 2026 conference paper deadline.<br>- Recorded the work to resume afterward: allocate GitHub tasks, consolidate the research and application-survey materials, and organize AWS-specific documentation.<br>- Noted the need to define the infrastructure problem accurately and prepare high-level materials for AI-assisted analysis. | 07/13/2026 | 07/13/2026 | |
+| Tue | - Did not work on the AWS project because the EIDT 2026 conference paper remained the priority. | 07/14/2026 | 07/14/2026 | |
+| Wed | - Did not work on the AWS project because the EIDT 2026 conference paper remained the priority. | 07/15/2026 | 07/15/2026 | |
+| Thu | - Did not work on the AWS project because the EIDT 2026 conference paper remained the priority. | 07/16/2026 | 07/16/2026 | |
+| Fri | - No worklog entry was recorded for this date; details are left for later completion. | 07/17/2026 | 07/17/2026 | |
 
 ### Week 4 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Documented the reason for temporarily pausing AWS study and project coordination from July 13 to July 16.
+* Preserved the project's next-action list instead of leaving the interruption undocumented.
+* Identified GitHub task allocation, research consolidation, and AWS documentation as the first activities to resume.
+* Recognized the need to state the infrastructure problem precisely before refining the target architecture.
+* Prepared the direction for high-level project materials that could support later analysis and design work.

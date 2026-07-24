@@ -14,7 +14,7 @@
     <section id="homelinks">
       <ul>
         <li>
-            <a class="padding" href='{{ cond (and (ne .Site.Params.landingPageURL nil) (gt (len .Site.Languages) 1)) .Site.Params.landingPageURL "/" }}'>{{ safeHTML (cond (ne .Site.Params.landingPageName nil) .Site.Params.landingPageName "<i class='fas fa-home'></i> Home") }}</a>
+            <a class="padding" href='{{ cond (and (ne .Site.Params.landingPageURL nil) (gt (len .Site.Languages) 1)) .Site.Params.landingPageURL .Site.Home.RelPermalink }}'>{{ safeHTML (cond (ne .Site.Params.landingPageName nil) .Site.Params.landingPageName "<i class='fas fa-home'></i> Home") }}</a>
         </li>
       </ul>
     </section>
@@ -65,9 +65,9 @@
               {{ range $siteLanguages }}
                   {{ if eq $translation.Lang .Lang }}
                     {{ if eq $pageLang .Lang }}
-                      <option id="{{ $translation.Language }}" value="{{ $translation.Permalink }}" selected>{{ .LanguageName }}</option>
+                      <option id="{{ $translation.Language }}" value="{{ $translation.RelPermalink }}" selected>{{ .LanguageName }}</option>
                     {{ else }}
-                      <option id="{{ $translation.Language }}" value="{{ $translation.Permalink }}">{{ .LanguageName }}</option>
+                      <option id="{{ $translation.Language }}" value="{{ $translation.RelPermalink }}">{{ .LanguageName }}</option>
                     {{ end }}
                   {{ end }}
               {{ end }}

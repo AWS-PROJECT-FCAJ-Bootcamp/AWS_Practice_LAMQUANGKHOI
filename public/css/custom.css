@@ -39,3 +39,44 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
+
+/* Shared ash-gray sidebar palette for both English and Vietnamese pages. */
+#sidebar {
+    background-color: #484c4f !important;
+}
+
+#header-wrapper {
+    background-color: #606569 !important;
+    border-bottom-color: #777d81 !important;
+}
+
+.searchbox {
+    background-color: #505559 !important;
+    border-color: #7b8185 !important;
+}
+
+#homelinks {
+    background-color: #565b5f !important;
+    border-bottom-color: #707579 !important;
+}
+
+#sidebar ul.topics > li.parent,
+#sidebar ul.topics > li.active,
+#sidebar h5.parent a {
+    background-color: #3e4245 !important;
+}
+
+#sidebar ul li.active > a,
+#sidebar h5.active a {
+    background-color: #d7d9da !important;
+    color: #3c4043 !important;
+}
+
+#sidebar a,
+#sidebar #shortcuts h3 {
+    color: #eceeef;
+}
+
+#sidebar hr {
+    border-bottom-color: #686d71 !important;
+}

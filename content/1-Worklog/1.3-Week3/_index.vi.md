@@ -1,59 +1,35 @@
 ---
 title: "Worklog Tuần 3"
-date: 2024-01-01
-weight: 1
+date: 2026-07-06
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tổ chức giai đoạn phát triển đầu tiên và làm rõ cách phân chia công việc trong nhóm.
+* Phân tích yêu cầu của ứng dụng tài chính và chốt các công nghệ ban đầu cho MVP.
+* Hoàn thành nội dung học nền tảng về mô hình serverless với AWS Lambda.
+* Xác định các trường dữ liệu tài chính và phần chuẩn bị truy cập dữ liệu cần thiết cho PoC.
+* Đánh giá Kiro như một công cụ AI dùng chung và ghi nhận các giới hạn về subscription.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Các công việc đã triển khai trong tuần này:
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tổ chức cuộc họp phân chia công việc và phân tích yêu cầu đồ án.<br>- Thống nhất các công cụ dùng chung cho nhóm.<br>- Hoàn thành nội dung học "Serverless with Lambda".<br>- Xác định các trường dữ liệu tài chính cần chú ý, bao gồm OHLCV và các chỉ báo kỹ thuật.<br>- Chốt công nghệ phát triển ban đầu, chuẩn bị tài khoản truy xuất dữ liệu và tiếp tục đánh giá phương án sử dụng Kiro chung. | 06/07/2026 | 06/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Không có nội dung worklog được ghi nhận cho ngày này; để trống thông tin chi tiết để bổ sung sau. | 07/07/2026 | 07/07/2026 | |
+| 4 | - Không có nội dung worklog được ghi nhận cho ngày này; để trống thông tin chi tiết để bổ sung sau. | 08/07/2026 | 08/07/2026 | |
+| 5 | - Thử nghiệm Kiro pool để sử dụng chung trong nhóm.<br>- Ghi nhận thử nghiệm không thành công do một lỗi subscription chưa xác định được nguyên nhân.<br>- Lên kế hoạch đánh giá giải pháp từ bên thứ ba hoặc một phương án công cụ dùng chung khác. | 09/07/2026 | 09/07/2026 | |
+| 6 | - Không có nội dung worklog được ghi nhận cho ngày này; để trống thông tin chi tiết để bổ sung sau. | 10/07/2026 | 10/07/2026 | |
 
 ### Kết quả đạt được tuần 3:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tổ chức cuộc họp phân chia task và làm rõ các yêu cầu trước mắt của đồ án.
+* Thống nhất các công nghệ và công cụ dùng chung ban đầu cho giai đoạn phát triển đầu tiên.
+* Hoàn thành nội dung học nền tảng về mô hình serverless với AWS Lambda.
+* Xác định dữ liệu OHLCV và các chỉ báo kỹ thuật là những đầu vào quan trọng của ứng dụng tài chính.
+* Chuẩn bị các tài khoản truy xuất dữ liệu ban đầu phục vụ quá trình thu thập dữ liệu nguồn.
+* Xác định vấn đề subscription của Kiro và ghi nhận yêu cầu đánh giá một công cụ cộng tác thay thế.
+* Đánh dấu rõ các ngày không có dữ liệu nguồn để có thể bổ sung sau mà không đưa thông tin chưa được xác minh vào báo cáo.
