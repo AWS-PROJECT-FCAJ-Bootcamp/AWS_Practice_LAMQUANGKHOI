@@ -85,3 +85,11 @@ def lambda_handler(event, context):
 
 1. **AWS Step Functions**: Tạo State Machine để duyệt qua danh sách danh mục mã cổ phiếu, gọi Lambda Ingestor xử lý song song, hỗ trợ cơ chế Retry khi gặp Rate Limit và tự động ghi log Checkpoint.
 2. **Amazon EventBridge Scheduler**: Cấu hình quy tắc Cron Job kích hoạt Step Functions định kỳ (ví dụ: vào 00:00 ngày đầu tiên của mỗi tháng) để tự động thu thập báo cáo tài chính quý/năm mới nhất.
+
+![Sơ đồ Workflow điều phối AWS Step Functions liên kết với AWS Glue Job](/images/StepFunction.png)
+
+*Mô tả luồng điều phối Step Functions State Machine trong hệ thống:*
+* **Khởi chạy Workflow**: Triggers tự động từ Amazon EventBridge Cron Scheduler hoặc gọi thủ công để kích hoạt toàn bộ pipeline dữ liệu.
+* **Tác vụ cào & lưu trữ dữ liệu thô**: Gọi AWS Lambda / ECS Ingestor cào dữ liệu BCTC từ `vnstock`, thực hiện checkpointing và lưu file JSON vào `S3 Raw Bucket`.
+* **Tác vụ AWS Glue ETL Job**: Step Functions chuyển sang bước gọi tác vụ **AWS Glue StartJobRun**, tự động kích hoạt tiến trình PySpark ETL làm sạch dữ liệu thô, tính toán các chỉ số tài chính ($CR$, $ROA$, $ROE$, $DAR$, $WCTA$) và gán nhãn nguy cơ phá sản **Altman Z-Score**.
+* **Cập nhật Catalog & Hoàn tất**: Sau khi Glue Job hoàn tất thành công, Step Functions tiếp tục kích hoạt AWS Glue Crawler quét metadata cập nhật vào Glue Data Catalog. Nếu phát sinh lỗi, hệ thống tự động thực hiện cơ chế Retry và chuyển sang trạng thái cảnh báo Fail State.

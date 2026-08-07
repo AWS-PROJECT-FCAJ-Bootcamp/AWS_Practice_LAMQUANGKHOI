@@ -85,3 +85,11 @@ def lambda_handler(event, context):
 
 1. **AWS Step Functions**: Create a State Machine to iterate through ticker batches, execute Lambda Ingestor functions concurrently, handle rate limits with exponential backoff retries, and write progress checkpoints.
 2. **Amazon EventBridge Scheduler**: Set up a Cron Rule to trigger the State Machine automatically (e.g., 00:00 on the 1st day of every month) to fetch updated quarterly/yearly financial reports.
+
+![AWS Step Functions State Machine Workflow Orchestrating AWS Glue Job](/images/StepFunction.png)
+
+*Step Functions State Machine Execution Description:*
+* **Workflow Trigger**: Scheduled execution triggered by Amazon EventBridge Cron Scheduler or manual invocation to initiate the financial data processing pipeline.
+* **Data Ingestion & Checkpoint Task**: Triggers AWS Lambda / ECS Ingestors to crawl raw financial reports via `vnstock`, write progress checkpoints, and persist raw JSON files into the `S3 Raw Bucket`.
+* **AWS Glue Job ETL Orchestration**: AWS Step Functions transitions to the **AWS Glue StartJobRun** state, triggering PySpark ETL jobs to normalize data, compute financial ratios ($CR$, $ROA$, $ROE$, $DAR$, $WCTA$), and calculate **Altman Z-Score** distress metrics.
+* **Glue Crawler & Completion**: Upon successful Glue Job completion, Step Functions triggers the AWS Glue Crawler to scan curated Parquet files and update the AWS Glue Data Catalog. In case of errors, automatic retry policies and failure handlers log alerts.

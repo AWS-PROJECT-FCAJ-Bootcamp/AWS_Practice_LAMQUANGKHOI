@@ -83,6 +83,10 @@ df_zscore.write \
 print("AWS Glue Job successfully processed financial features and saved Parquet files!")
 ```
 
+![AWS Step Functions State Machine Orchestrating AWS Glue ETL Job](/images/StepFunction.png)
+
+*AWS Step Functions State Machine executing AWS Glue Job (`StartJobRun`), monitoring job completion (`GetJobRun`), and triggering Glue Crawlers.*
+
 ---
 
 ### Step 3: Configure AWS Glue Crawler & Data Catalog
