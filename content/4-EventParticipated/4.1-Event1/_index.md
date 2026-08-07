@@ -73,10 +73,10 @@ Despite the match outcome, the competition provided invaluable architectural ins
 ### Event Gallery
 
 #### Tournament Bracket
-![Tournament Bracket of the 8 Participating Teams](https://tahumn.github.io/AWS-Internship-Portfolio/images/Sodothidau.jpg)
+![Tournament Bracket of the 8 Participating Teams](/images/Sodothidau.jpg)
 
 #### Event Commemorative Photo
-![Event Group Photo](https://tahumn.github.io/AWS-Internship-Portfolio/images/AnhSuKien1.JPG)
+![Event Group Photo](/images/AnhSuKien1.jpg)
 
 ---
 

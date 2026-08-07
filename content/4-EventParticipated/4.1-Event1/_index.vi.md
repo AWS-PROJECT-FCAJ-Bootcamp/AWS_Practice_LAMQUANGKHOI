@@ -19,7 +19,7 @@ pre: " <b> 4.1. </b> "
 ---
 
 ### Mục đích tham gia & Vai trò Trưởng đội
-Ngày 20/06/2026, mình trực tiếp tham gia sự kiện **Cloud Architect** với vai trò **Trưởng đội (Team Leader)** dẫn dắt đội **"Gặp phải thằng liều"**. Đây là cuộc thi đấu kiến thức đám mây kịch tính, yêu cầu các thí sinh phải vận dụng linh hoạt từ khái niệm AWS Cloud cơ bản đến các tình huống thiết kế kiến trúc hệ thống quy mô lớn.
+Ngày 20/06/2026, mình trực tiếp tham gia sự kiện **Cloud Architect** với vai trò **Trưởng đội (Team Leader)** dẫn dắt đội **"Gặp phải thằng liều"**. Đây là cuộc thi đấu kiến thức đám mây kịch tính, yêu cầu các thí sinh phải vận dụng linh hoạt từ khái niệm AWS Cloud cơ bản đến các tình huống thiết kế kiến trúc hệ thống quy mô lớn. Nhóm mình chưa có học gì qua nhiều nên cũng dự định sẽ cứ như cái têm, "liều" với đề thi.
 
 Trong vai trò Lead Team, nhiệm vụ của mình không chỉ là tham gia trả lời câu hỏi mà còn là người điều phối nhịp độ thảo luận giữa các thành viên, phân tích độ rủi ro của từng phương án, và đưa ra quyết định cuối cùng khi chốt đáp án cũng như thời điểm kích hoạt các kỹ năng đặc biệt trong trận đấu.
 
@@ -73,10 +73,10 @@ Dù kết quả thi đấu chưa đạt mốc cao nhất như kỳ vọng, nhưn
 ### Hình ảnh ghi nhớ tại sự kiện
 
 #### Sơ đồ thi đấu các đội
-![Sơ đồ thi đấu của tám đội tham gia sự kiện Cloud Architect](https://tahumn.github.io/AWS-Internship-Portfolio/images/Sodothidau.jpg)
+![Sơ đồ thi đấu của tám đội tham gia sự kiện Cloud Architect](/images/Sodothidau.jpg)
 
 #### Ảnh kỷ niệm sự kiện
-![Ảnh chụp chung cuối sự kiện](https://tahumn.github.io/AWS-Internship-Portfolio/images/AnhSuKien1.JPG)
+![Ảnh chụp chung cuối sự kiện](/images/AnhSuKien1.jpg)
 
 ---
 
