@@ -6,30 +6,31 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# SECURE S3 DATA LAKE ACCESS USING AWS VPC ENDPOINTS & PRIVATELINK
+# AUTOMATED VIETNAMESE SECURITIES FINANCIAL DATA INGESTION AND ANALYTICS PLATFORM ON AWS SERVERLESS
 
 ### Workshop Overview
-In our team's **Vietnamese Corporate Financial Distress Analytics Platform**, **Amazon S3 Data Lake** serves as the central storage repository containing raw financial report datasets (`S3 Raw Bucket`) and normalized indicator feature matrices (`S3 Curated Bucket`). To ensure high-level security for sensitive corporate financial data and prevent unauthorized data exposure over the public internet, our team implemented private connectivity using **AWS VPC Endpoints & AWS PrivateLink**.
+In this hands-on lab series, our team presents a step-by-step implementation guide for building the **Automated Vietnamese Securities Financial Data Ingestion and Analytics Platform on AWS Serverless**. The system automates financial statement data crawling, normalizes raw datasets, calculates key financial ratios, predicts **Financial Distress** / Bankruptcy risks for companies listed across 3 Vietnamese stock exchanges (**HOSE, HNX, UPCOM**), and delivers REST APIs, an interactive Web Dashboard, and Email Alert notifications.
 
-This architecture enables compute workloads (EC2, AWS Lambda, AWS Glue Jobs) inside VPCs or on-premises data centers to access Amazon S3 directly via AWS internal backbone networks without ever traversing the public Internet.
-
-In this practical workshop, our team synthesizes and guides the end-to-end implementation and testing of two core VPC Endpoint types:
-* **Gateway VPC Endpoint**: Routes traffic directly from VPC Subnets to Amazon S3 via Route Tables. This delivers maximum data transfer throughput for financial analytics while incurring zero additional service costs.
-* **Interface VPC Endpoint (AWS PrivateLink)**: Deploys Elastic Network Interfaces (ENIs) with private IP addresses inside your VPC. This allows hybrid on-premises systems or partner networks to securely query the S3 Data Lake using private DNS resolution.
+The entire architecture is engineered using 100% cloud-native AWS Serverless services, offering automatic scalability, high performance, and cost efficiency:
+* **Data Ingestion Layer**: Amazon EventBridge, AWS Step Functions, AWS Lambda / ECS Ingestor (integrated with `vnstock`).
+* **Data Lake Storage Layer**: Amazon S3 (`S3 Raw Bucket` & `S3 Curated Bucket`).
+* **Processing & Query Layer (ETL & Query)**: AWS Glue Job (PySpark/Python), AWS Glue Crawler, AWS Glue Data Catalog, Amazon Athena.
+* **API & Authentication Layer**: Amazon Cognito, AWS WAF, Amazon API Gateway, AWS Lambda Backend API.
+* **Frontend & Alert Layer**: AWS Amplify (React/Next.js), AWS Lambda, Amazon SES.
 
 ---
 
 ### Table of Contents
 
-1. **[5.1. Workshop Overview & Architecture](5.1-workshop-overview/)**
-   * Overview of VPC Endpoint concepts, comparison between Gateway vs. Interface Endpoints, and lab topology.
-2. **[5.2. Prerequisites & Environment Setup](5.2-prerequiste/)**
-   * Provisioning underlying VPC infrastructure, subnets, test EC2 instances, and S3 Data Lake buckets.
-3. **[5.3. Accessing Amazon S3 from VPC](5.3-s3-vpc/)**
-   * Creating a Gateway VPC Endpoint, updating route tables, and verifying private S3 access from private subnets.
-4. **[5.4. Accessing Amazon S3 from On-Premises Networks](5.4-s3-onprem/)**
-   * Deploying an S3 Interface Endpoint, simulating on-premises DNS resolution, and testing PrivateLink connectivity.
-5. **[5.5. Granular Access Control with Endpoint Policies](5.5-policy/)**
-   * Attaching custom Endpoint Policies to restrict access strictly to authorized project S3 buckets.
-6. **[5.6. Resource Cleanup](5.6-cleanup/)**
-   * Step-by-step instructions to delete provisioned AWS resources after lab completion to prevent unexpected charges.
+1. **[5.1. Overview & System Architecture](5.1-workshop-overview/)**
+   * Overview of the listed corporate financial distress prediction problem and the 5-layer AWS Serverless architecture.
+2. **[5.2. Automated Data Ingestion Pipeline](5.2-pipeline/)**
+   * Creating S3 Raw Buckets, filtering non-financial tickers, writing Lambda data ingestion scripts using `vnstock`, and orchestrating workflows with EventBridge & Step Functions.
+3. **[5.3. Data Processing & Data Lake (AWS Glue ETL, Data Catalog & Athena)](5.3-glue-config/)**
+   * Creating S3 Curated Buckets, writing AWS Glue PySpark jobs for data normalization, Winsorization, financial ratio & Altman Z-Score calculation, running Crawlers, and querying with Athena.
+4. **[5.4. REST API & User Authentication (Cognito, API Gateway & Lambda API)](5.4-amplify/)**
+   * Configuring Cognito User Pools, setting up REST API Gateways protected by AWS WAF, and building Lambda Backend services for Athena queries.
+5. **[5.5. Web Dashboard & Email Alerts (Amplify, Lambda & SES)](5.5-policy/)**
+   * Deploying React/Next.js Web Dashboards on AWS Amplify and setting up Lambda + Amazon SES for automated distress email alerts.
+6. **[5.6. Resource Cleanup & Summary](5.6-cleanup/)**
+   * Step-by-step guide to cleaning up provisioned AWS cloud resources to prevent unexpected billing.

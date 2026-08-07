@@ -1,20 +1,89 @@
 ---
-title : "Access S3 from on-premises"
-date : 2024-01-01
-weight : 4
-chapter : false
-pre : " <b> 5.4. </b> "
+title: "REST API & User Authentication (Cognito, API Gateway & Lambda API)"
+date: 2024-01-01
+weight: 4
+chapter: false
+pre: " <b> 5.4. </b> "
 ---
 
-#### Overview
+# 5.4. REST API & USER AUTHENTICATION (COGNITO, API GATEWAY & LAMBDA API)
 
-+ In this section, you will create an Interface endpoint to access Amazon S3 from a simulated on-premises environment. The Interface endpoint will allow you to route to Amazon S3 over a VPN connection from your simulated on-premises environment.
+In this module, our team builds the **API & Auth Layer** to expose secure RESTful API endpoints for the Web Dashboard application to query financial indicator metrics and distress alert records.
 
-+ Why using **Interface endpoint**: 
-    + Gateway endpoints only work with resources running in the VPC where they are created. Interface endpoints work with resources running in VPC, and also resources running in on-premises environments. Connectivty from your on-premises environment to the cloud can be provided by AWS Site-to-Site VPN or AWS Direct Connect.
-    + Interface endpoints allow you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and partners in their own VPCs (referred to as PrivateLink Endpoint Services), and supported AWS Marketplace Partner services. For this workshop, we will focus on connecting to Amazon S3.
+---
 
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
+### Step 1: Initialize Amazon Cognito User Pool
+1. Open **Amazon Cognito Console** ➔ Click **Create user pool**.
+2. User Pool Name: `vietnam-financial-user-pool`.
+3. Sign-in options: **Email** and **Username**.
+4. Configure password security policies and issue JWT Tokens (Access Token & ID Token).
+5. Create an **App Client**: `vietnam-financial-web-client`.
+6. Save the `User Pool ID` and `App Client ID`.
 
+---
 
+### Step 2: Write AWS Lambda Backend API Script (Athena Integration)
 
+AWS Lambda function handling incoming REST requests from API Gateway, executing SQL queries against Amazon Athena, and returning JSON payloads:
+
+```python
+import json
+import boto3
+import time
+
+athena_client = boto3.client('athena')
+DATABASE = 'vietnam_financial_db'
+S3_OUTPUT = 's3://s3-vietnam-financial-curated-data-prod/athena_query_results/'
+
+def lambda_handler(event, context):
+    # Extract query parameters (e.g., /api/financial?symbol=VNM)
+    params = event.get('queryStringParameters') or {}
+    symbol = params.get('symbol', 'VNM')
+    
+    query = f"""
+        SELECT symbol, year, z_score, distress_zone, roa, roe, dar, cr 
+        FROM {DATABASE}.financial_features 
+        WHERE symbol = '{symbol}' 
+        ORDER BY year DESC;
+    """
+    
+    # Execute Athena Query
+    response = athena_client.start_query_execution(
+        QueryString=query,
+        QueryExecutionContext={'Database': DATABASE},
+        ResultConfiguration={'OutputLocation': S3_OUTPUT}
+    )
+    
+    query_execution_id = response['QueryExecutionId']
+    
+    # Wait for execution completion
+    time.sleep(2)
+    
+    results = athena_client.get_query_results(QueryExecutionId=query_execution_id)
+    
+    rows = results['ResultSet']['Rows']
+    data = []
+    headers = [col['VarCharValue'] for col in rows[0]['Data']]
+    
+    for row in rows[1:]:
+        values = [field.get('VarCharValue', '') for field in row['Data']]
+        data.append(dict(zip(headers, values)))
+        
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        'body': json.dumps({'symbol': symbol, 'financial_data': data}, ensure_ascii=False)
+    }
+```
+
+---
+
+### Step 3: Configure Amazon API Gateway & AWS WAF
+1. Open **Amazon API Gateway Console** ➔ Create a new **REST API**: `vietnam-financial-api`.
+2. Add Resource `/api/financial` and create a `GET` Method.
+3. Attach **Cognito Authorizer**: Connect `vietnam-financial-user-pool` to enforce JWT token authorization.
+4. Attach **AWS WAF (Web Application Firewall)** to protect against common web exploits (DDoS, SQL Injection, XSS).
+5. Click **Deploy API** to Stage `prod`. Note down the `Invoke URL`.

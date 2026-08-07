@@ -1,99 +1,79 @@
 ---
-title : "VPC Endpoint Policies"
-date : 2024-01-01
-weight : 5
-chapter : false
-pre : " <b> 5.5. </b> "
+title: "Web Dashboard & Email Alerts (Amplify, Lambda & SES)"
+date: 2024-01-01
+weight: 5
+chapter: false
+pre: " <b> 5.5. </b> "
 ---
 
-When you create an interface or gateway endpoint, you can attach an endpoint policy to it that controls access to the service to which you are connecting. A VPC endpoint policy is an IAM resource policy that you attach to an endpoint. If you do not attach a policy when you create an endpoint, AWS attaches a default policy for you that allows full access to the service through the endpoint.
+# 5.5. WEB DASHBOARD & EMAIL ALERTS (AMPLIFY, LAMBDA & SES)
 
-You can create a policy that restricts access to specific S3 buckets only. This is useful if you only want certain S3 Buckets to be accessible through the endpoint.
+In this module, our team completes the **UI & Alert Layer** by deploying an interactive Web Dashboard for data visualization and building an automated Email Alert system for high-risk corporate distress warnings.
 
-In this section you will create a VPC endpoint policy that restricts access to the S3 bucket specified in the VPC endpoint policy.
+---
 
-![endpoint diagram](/images/5-Workshop/5.5-Policy/s3-bucket-policy.png)
+### Step 1: Deploy Web Dashboard on AWS Amplify
+1. Navigate to **AWS Amplify Console** ➔ Click **Host web app**.
+2. Connect your GitHub Repository containing the Web Dashboard frontend source code (React/Next.js).
+3. Configure Build Environment Variables:
+   - `REACT_APP_API_GATEWAY_URL`: REST API Gateway `prod` URL.
+   - `REACT_APP_COGNITO_USER_POOL_ID`: User Pool ID.
+   - `REACT_APP_COGNITO_CLIENT_ID`: App Client ID.
+4. Click **Save and deploy**. AWS Amplify automatically runs CI/CD build pipelines and provisions HTTPS domains.
 
-#### Connect to an EC2 instance and verify connectivity to S3
+---
 
-1. Start a new AWS Session Manager session on the instance named Test-Gateway-Endpoint. From the session, verify that you can list the contents of the bucket you created in Part 1: Access S3 from VPC:
+### Step 2: Configure Amazon SES (Simple Email Service)
+1. Open **Amazon SES Console** ➔ **Verified identities**.
+2. Click **Create identity** ➔ Select **Email address**.
+3. Enter the alert recipient email address (e.g., `alert-financial@domain.com`).
+4. Access the email inbox and click the AWS verification link to complete setup.
 
-```
-aws s3 ls s3://\<your-bucket-name\>
-```
-![test](/images/5-Workshop/5.5-Policy/test1.png)
+---
 
-The bucket contents include the two 1 GB files uploaded in earlier.
+### Step 3: Write AWS Lambda Alert Notification Script (SES Integration)
 
-2. Create a new S3 bucket; follow the naming pattern you used in Part 1, but add a '-2' to the name. Leave other fields as default and click create
+AWS Lambda function scanning distress-labeled records ($Z\text{-score} \le 1.23$) and triggering Amazon SES email delivery:
 
-![create bucket](/images/5-Workshop/5.5-Policy/create-bucket.png)
+```python
+import boto3
+import json
 
-Successfully create bucket
+ses_client = boto3.client('ses', region_name='ap-southeast-1')
+SENDER_EMAIL = "alert-financial@domain.com"
 
-![Success](/images/5-Workshop/5.5-Policy/create-bucket-success.png)
-
-3. Navigate to: Services > VPC > Endpoints, then select the Gateway VPC endpoint you created earlier. Click the Policy tab. Click Edit policy.
-
-![policy](/images/5-Workshop/5.5-Policy/policy1.png)
-
-The default policy allows access to all S3 Buckets through the VPC endpoint.
-
-4. In Edit Policy console, copy & Paste the following policy, then replace yourbucketname-2 with your 2nd bucket name. This policy will allow access through the VPC endpoint to your new bucket, but not any other bucket in Amazon S3. Click Save to apply the policy.
-
-```
-{
-  "Id": "Policy1631305502445",
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "Stmt1631305501021",
-      "Action": "s3:*",
-      "Effect": "Allow",
-      "Resource": [
-      				"arn:aws:s3:::yourbucketname-2",
-       				"arn:aws:s3:::yourbucketname-2/*"
-       ],
-      "Principal": "*"
+def lambda_handler(event, context):
+    # Extract distress records triggered by Glue ETL or Athena Callbacks
+    records = event.get('distress_records', [])
+    
+    for record in records:
+        symbol = record.get('symbol')
+        z_score = record.get('z_score')
+        year = record.get('year')
+        
+        subject = f"⚠️ HIGH FINANCIAL DISTRESS RISK ALERT: Ticker {symbol} ({year})"
+        body_text = f"""
+        VIETNAMESE SECURITIES FINANCIAL RISK ANALYTICS SYSTEM
+        -------------------------------------------------------------
+        Company Ticker: {symbol}
+        Fiscal Year: {year}
+        Altman Z-Score: {z_score} (Entered Red Flag - Distress Zone <= 1.23)
+        
+        Recommendation: High risk of financial distress or corporate bankruptcy. Investors should carefully evaluate portfolio holdings.
+        """
+        
+        response = ses_client.send_email(
+            Source=SENDER_EMAIL,
+            Destination={'ToAddresses': [SENDER_EMAIL]},
+            Message={
+                'Subject': {'Data': subject, 'Charset': 'UTF-8'},
+                'Body': {'Text': {'Data': body_text, 'Charset': 'UTF-8'}}
+            }
+        )
+        print(f"Successfully dispatched alert email for {symbol}, MessageId: {response['MessageId']}")
+        
+    return {
+        'statusCode': 200,
+        'body': json.dumps("Automated Email Alert Dispatching Completed Successfully!")
     }
-  ]
-}
 ```
-
-![custom policy](/images/5-Workshop/5.5-Policy/policy2.png)
-
-Successfully customize policy
-
-![success](/static/images/5-Workshop/5.5-Policy/success.png)
-
-5. From your session on the Test-Gateway-Endpoint instance, test access to the S3 bucket you created in Part 1: Access S3 from VPC
-```
-aws s3 ls s3://<yourbucketname>
-```
-
-This command will return an error because access to this bucket is not permitted by your new VPC endpoint policy:
-
-![error](/static/images/5-Workshop/5.5-Policy/error.png)
-
-6. Return to your home directory on your EC2 instance ` cd~ `
-
-+ Create a file ```fallocate -l 1G test-bucket2.xyz ```
-+ Copy file to 2nd bucket ```aws s3 cp test-bucket2.xyz s3://<your-2nd-bucket-name>```
-
-![success](/static/images/5-Workshop/5.5-Policy/test2.png)
-
-This operation succeeds because it is permitted by the VPC endpoint policy.
-
-![success](/static/images/5-Workshop/5.5-Policy/test2-success.png)
-
-+ Then we test access to the first bucket by copy the file to 1st bucket `aws s3 cp test-bucket2.xyz s3://<your-1st-bucket-name>`
-
-![fail](/static/images/5-Workshop/5.5-Policy/test2-fail.png)
-
-This command will return an error because access to this bucket is not permitted by your new VPC endpoint policy.
-
-#### Part 3 Summary:
-
-In this section, you created a VPC endpoint policy for Amazon S3, and used the AWS CLI to test the policy. AWS CLI actions targeted to your original S3 bucket failed because you applied a policy that only allowed access to the second bucket you created. AWS CLI actions targeted for your second bucket succeeded because the policy allowed them. These policies can be useful in situations where you need to control access to resources through VPC endpoints.
-
-
