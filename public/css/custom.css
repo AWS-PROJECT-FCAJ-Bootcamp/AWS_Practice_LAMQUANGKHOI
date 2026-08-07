@@ -72,9 +72,12 @@ h1, h2, h3, h4, h5, h6 {
     color: #3c4043 !important;
 }
 
-#sidebar a,
-#sidebar #shortcuts h3 {
+#sidebar a {
     color: #eceeef;
+}
+
+#sidebar #shortcuts h3 {
+    color: #d1a153 !important;
 }
 
 #sidebar hr {
