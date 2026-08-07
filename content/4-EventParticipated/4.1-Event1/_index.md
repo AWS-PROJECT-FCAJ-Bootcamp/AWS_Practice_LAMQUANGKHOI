@@ -19,7 +19,7 @@ pre: " <b> 4.1. </b> "
 ---
 
 ### Objectives & My Role as Team Leader
-On June 20, 2026, I led our team **"Gặp phải thằng liều"** as **Team Leader** at the **Cloud Architect Competition**. This intense competition tested hands-on cloud skills, requiring participants to solve complex architecture challenges ranging from fundamental AWS infrastructure concepts to large-scale enterprise system design.
+On June 20, 2026, I led our team **"Gặp phải thằng liều"** as **Team Leader** at the **Cloud Architect Competition**. This intense competition tested hands-on cloud skills, requiring participants to solve complex architecture challenges ranging from fundamental AWS infrastructure concepts to large-scale enterprise system design. Since our team hadn't covered much of the advanced material yet, we decided to live up to our team name and take a bold, "reckless" leap with the exam questions.
 
 As Team Leader, my responsibilities extended beyond answering questions. I actively facilitated live discussions among our 5 team members, evaluated risk trade-offs under tight time limits, and made the final calls when finalizing answers and triggering special game boosters.
 
