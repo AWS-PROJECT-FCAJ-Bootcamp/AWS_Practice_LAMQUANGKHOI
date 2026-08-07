@@ -6,14 +6,16 @@ chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### Giới thiệu về VPC Endpoint
+# GIỚI THIỆU VỀ AWS VPC ENDPOINT & ARCHITECTURE
 
-+ Điểm cuối VPC (endpoint) là thiết bị ảo. Chúng là các thành phần VPC có thể mở rộng theo chiều ngang, dự phòng và có tính sẵn sàng cao. Chúng cho phép giao tiếp giữa tài nguyên điện toán của bạn và dịch vụ AWS mà không gây ra rủi ro về tính sẵn sàng.
-+ Tài nguyên điện toán đang chạy trong VPC có thể truy cập Amazon S3 bằng cách sử dụng điểm cuối Gateway. Interface Endpoint  PrivateLink có thể được sử dụng bởi tài nguyên chạy trong VPC hoặc tại TTDL.
+#### Giới thiệu về VPC Endpoint trong Hệ thống Tài chính
+* **VPC Endpoints** là các thiết bị ảo được hạ tầng AWS quản lý hoàn toàn, có khả năng mở rộng theo chiều ngang, tự động dự phòng và đạt độ sẵn sàng cao (High Availability). VPC Endpoints cho phép tài nguyên điện toán trong hệ thống của nhóm mình giao tiếp riêng tư với các dịch vụ AWS như **Amazon S3** mà không làm lộ lưu lượng ra ngoài Internet công cộng.
+* **Tài nguyên điện toán trong VPC** (EC2, Lambda, Glue ETL) truy cập Amazon S3 Data Lake an toàn thông qua **Gateway VPC Endpoint**.
+* **Tài nguyên từ trung tâm dữ liệu On-premises** hoặc môi trường lai (Hybrid Cloud) kết nối tới S3 Data Lake thông qua **Interface VPC Endpoint (AWS PrivateLink)**.
 
-#### Tổng quan về workshop
-Trong workshop này, bạn sẽ sử dụng hai VPC.
-+ **"VPC Cloud"** dành cho các tài nguyên cloud như Gateway endpoint và EC2 instance để kiểm tra.
-+ **"VPC On-Prem"** mô phỏng môi trường truyền thống như nhà máy hoặc trung tâm dữ liệu của công ty. Một EC2 Instance chạy phần mềm StrongSwan VPN đã được triển khai trong "VPC On-prem" và được cấu hình tự động để thiết lập đường hầm VPN Site-to-Site với AWS Transit Gateway. VPN này mô phỏng kết nối từ một vị trí tại TTDL (on-prem) với AWS cloud. Để giảm thiểu chi phí, chỉ một phiên bản VPN được cung cấp để hỗ trợ workshop này. Khi lập kế hoạch kết nối VPN cho production workloads của bạn, AWS khuyên bạn nên sử dụng nhiều thiết bị VPN để có tính sẵn sàng cao.
+#### Mô hình kiến trúc kiểm thử của Workshop
+Trong bài workshop này, nhóm mình thiết lập và vận hành cấu trúc mô phỏng gồm hai VPC chính:
+* **"VPC Cloud"**: Đại diện cho hạ tầng điện toán đám mây chứa Amazon S3 Data Lake (`S3 Raw` & `S3 Curated Bucket`), Gateway Endpoint và các EC2 instance kiểm thử tính toán chỉ số tài chính.
+* **"VPC On-Prem"**: Mô phỏng trung tâm dữ liệu truyền thống của doanh nghiệp. Một EC2 Instance chạy phần mềm strongSwan VPN được khởi tạo trong "VPC On-prem" và tự động thiết lập đường hầm **Site-to-Site VPN** với AWS Transit Gateway để kết nối riêng tư vào VPC Cloud.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+![Sơ đồ tổng quan kiến trúc bài lab VPC Endpoint](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
