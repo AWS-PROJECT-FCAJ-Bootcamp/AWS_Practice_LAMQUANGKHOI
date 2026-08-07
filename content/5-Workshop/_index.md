@@ -22,15 +22,15 @@ The entire architecture is engineered using 100% cloud-native AWS Serverless ser
 
 ### Table of Contents
 
-1. **[5.1. Overview & System Architecture](5.1-workshop-overview/)**
+1. **[5.1. Overview & System Architecture]({{< ref "5.1-workshop-overview" >}})**
    * Overview of the listed corporate financial distress prediction problem and the 5-layer AWS Serverless architecture.
-2. **[5.2. Automated Data Ingestion Pipeline](5.2-pipeline/)**
+2. **[5.2. Automated Data Ingestion Pipeline]({{< ref "5.2-pipeline" >}})**
    * Creating S3 Raw Buckets, filtering non-financial tickers, writing Lambda data ingestion scripts using `vnstock`, and orchestrating workflows with EventBridge & Step Functions.
-3. **[5.3. Data Processing & Data Lake (AWS Glue ETL, Data Catalog & Athena)](5.3-glue-config/)**
+3. **[5.3. Data Processing & Data Lake (AWS Glue ETL, Data Catalog & Athena)]({{< ref "5.3-glue-config" >}})**
    * Creating S3 Curated Buckets, writing AWS Glue PySpark jobs for data normalization, Winsorization, financial ratio & Altman Z-Score calculation, running Crawlers, and querying with Athena.
-4. **[5.4. REST API & User Authentication (Cognito, API Gateway & Lambda API)](5.4-amplify/)**
+4. **[5.4. REST API & User Authentication (Cognito, API Gateway & Lambda API)]({{< ref "5.4-amplify" >}})**
    * Configuring Cognito User Pools, setting up REST API Gateways protected by AWS WAF, and building Lambda Backend services for Athena queries.
-5. **[5.5. Web Dashboard & Email Alerts (Amplify, Lambda & SES)](5.5-policy/)**
+5. **[5.5. Web Dashboard & Email Alerts (Amplify, Lambda & SES)]({{< ref "5.5-policy" >}})**
    * Deploying React/Next.js Web Dashboards on AWS Amplify and setting up Lambda + Amazon SES for automated distress email alerts.
-6. **[5.6. Resource Cleanup & Summary](5.6-cleanup/)**
+6. **[5.6. Resource Cleanup & Summary]({{< ref "5.6-cleanup" >}})**
    * Step-by-step guide to cleaning up provisioned AWS cloud resources to prevent unexpected billing.

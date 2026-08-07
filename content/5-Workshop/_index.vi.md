@@ -22,15 +22,15 @@ Kiến trúc toàn vẹn của bài lab được xây dựng dựa trên 100% d�
 
 ### Danh mục bài thực hành
 
-1. **[5.1. Giới thiệu & Kiến trúc tổng quan](5.1-workshop-overview/)**
+1. **[5.1. Giới thiệu & Kiến trúc tổng quan]({{< ref "5.1-workshop-overview" >}})**
    * Giới thiệu bài toán phân tích rủi ro tài chính doanh nghiệp niêm yết và kiến trúc 5 phân vùng AWS Serverless.
-2. **[5.2. Luồng Thu thập Dữ liệu tự động (Data Ingestion Pipeline)](5.2-pipeline/)**
+2. **[5.2. Luồng Thu thập Dữ liệu tự động (Data Ingestion Pipeline)]({{< ref "5.2-pipeline" >}})**
    * Tạo S3 Raw Bucket, lọc danh sách doanh nghiệp phi tài chính, viết Lambda cào dữ liệu BCTC từ `vnstock` và thiết lập EventBridge + Step Functions.
-3. **[5.3. Xử lý dữ liệu & Data Lake (AWS Glue ETL, Data Catalog & Athena)](5.3-glue-config/)**
+3. **[5.3. Xử lý dữ liệu & Data Lake (AWS Glue ETL, Data Catalog & Athena)]({{< ref "5.3-glue-config" >}})**
    * Tạo S3 Curated Bucket, viết AWS Glue Job làm sạch dữ liệu, Winsorization, tính toán chỉ số tài chính & Altman Z-Score, chạy Crawler và truy vấn Athena.
-4. **[5.4. Xây dựng REST API & Xác thực người dùng (Cognito, API Gateway & Lambda API)](5.4-amplify/)**
+4. **[5.4. Xây dựng REST API & Xác thực người dùng (Cognito, API Gateway & Lambda API)]({{< ref "5.4-amplify" >}})**
    * Cấu hình Cognito User Pool, xây dựng REST API Gateway được bảo vệ bởi AWS WAF và viết Lambda Backend tiếp nhận request truy vấn dữ liệu từ Athena.
-5. **[5.5. Triển khai Web Dashboard & Cảnh báo Email (Amplify, Lambda & SES)](5.5-policy/)**
+5. **[5.5. Triển khai Web Dashboard & Cảnh báo Email (Amplify, Lambda & SES)]({{< ref "5.5-policy" >}})**
    * Triển khai giao diện ứng dụng Web Dashboard lên AWS Amplify và cấu hình Lambda + Amazon SES tự động gửi email cảnh báo nguy cơ phá sản.
-6. **[5.6. Dọn dẹp tài nguyên & Tổng kết](5.6-cleanup/)**
+6. **[5.6. Dọn dẹp tài nguyên & Tổng kết]({{< ref "5.6-cleanup" >}})**
    * Hướng dẫn dọn dẹp các tài nguyên AWS đã khởi tạo sau khi hoàn tất bài workshop để tránh phát sinh chi phí ngoài ý muốn.
