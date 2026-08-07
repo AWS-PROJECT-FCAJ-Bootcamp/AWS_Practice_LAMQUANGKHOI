@@ -1,5 +1,5 @@
 baseURL = "https://AWS-PROJECT-FCAJ-Bootcamp.github.io/AWS_Practice_LAMQUANGKHOI/"
-relativeURLs = false
+relativeURLs = true
 canonifyURLs = false
 defaultContentLanguage = "en"
 
@@ -12,7 +12,8 @@ home = [ "HTML", "RSS", "JSON"]
 
 [params]
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
-  themeVariant = "workshop"
+  themeVariant = "blue"
+  custom_css = ["css/custom.css"]
   # Git hub repo link
   editURL = ""
   description = ""
