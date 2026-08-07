@@ -19,11 +19,11 @@ During our internship, our team participated in technical AWS events and competi
 
 ---
 
-### [Event 2 - GenAI-powered App-DB Modernization Workshop]({{< ref "4.2-event2" >}})
-&emsp;**Event Name:** GenAI-powered App-DB Modernization Workshop
+### [Event 2 - AWS & GenAI Innovation Workshop]({{< ref "4.2-event2" >}})
+&emsp;**Event Name:** AWS & GenAI Innovation Workshop
 
 &emsp;**Date & Time:** August 13, 2025
 
 &emsp;**Location:** 26th Floor, Bitexco Financial Tower, No. 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City
 
-&emsp;**Role:** Attendee
+&emsp;**Role:** Participant – Active Q&A participant & FCAJ Community Member

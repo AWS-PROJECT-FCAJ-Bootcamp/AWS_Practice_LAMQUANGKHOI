@@ -19,11 +19,11 @@ Trong quá trình thực tập, mình đã tham gia các sự kiện và cuộc 
 
 ---
 
-### [Event 2 - GenAI-powered App-DB Modernization workshop]({{< ref "4.2-event2" >}})
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+### [Event 2 - AWS & GenAI Innovation Workshop]({{< ref "4.2-event2" >}})
+&emsp;**Tên sự kiện:** AWS & GenAI Innovation Workshop
 
 &emsp;**Thời gian:** Ngày 13/08/2025
 
 &emsp;**Địa điểm:** Tầng 26, Tòa nhà Bitexco Financial Tower, số 02 Hải Triều, Phường Sài Gòn, TP. Hồ Chí Minh
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự
+&emsp;**Vai trò trong sự kiện:** Thí sinh / Người tham dự – Tích cực trao đổi, đặt câu hỏi trực tiếp với các diễn giả và giao lưu cộng đồng FCAJ
