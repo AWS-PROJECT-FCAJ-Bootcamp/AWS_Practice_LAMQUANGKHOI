@@ -19,8 +19,8 @@ During our internship, our team participated in technical AWS events and competi
 
 ---
 
-### [Event 2 - AWS & GenAI Innovation Workshop]({{< ref "4.2-event2" >}})
-&emsp;**Event Name:** AWS & GenAI Innovation Workshop
+### [Event 2 - AWS Community Day]({{< ref "4.2-event2" >}})
+&emsp;**Event Name:** AWS Community Day
 
 &emsp;**Date & Time:** August 13, 2025
 

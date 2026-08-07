@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-# BÁO CÁO THAM GIA SỰ KIỆN: AWS & GENAI INNOVATION WORKSHOP
+# BÁO CÁO THAM GIA SỰ KIỆN: AWS COMMUNITY DAY
 
 ### 🎯 Mục đích & Tổng quan Sự kiện
 Sự kiện là buổi chia sẻ chuyên sâu về các giải pháp **GenAI**, **Autonomous Operations** và **AWS DevOps Agent** hiện đại. Qua các phiên trình bày và demo thực tế từ các chuyên gia, mình đã cập nhật được nhiều góc nhìn mới về cách ứng dụng trí tuệ nhân tạo để tự động hóa vận hành cloud, xây dựng trợ lý thoại (Voice Agent) và tối ưu hiệu suất làm việc cho doanh nghiệp.

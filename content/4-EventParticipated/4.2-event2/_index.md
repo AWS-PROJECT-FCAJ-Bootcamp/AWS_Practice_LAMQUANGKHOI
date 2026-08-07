@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-# EVENT REPORT: AWS & GENAI INNOVATION WORKSHOP
+# EVENT REPORT: AWS COMMUNITY DAY
 
 ### 🎯 Purpose & Event Overview
 This event was an in-depth technical workshop focusing on modern **GenAI**, **Autonomous Operations**, and **AWS DevOps Agent** solutions. Through technical presentations and live demos from industry experts, our team gained valuable insights into leveraging artificial intelligence to automate cloud operations, construct human-like voice agents, and enhance enterprise productivity.

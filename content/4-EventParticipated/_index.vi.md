@@ -19,8 +19,8 @@ Trong quá trình thực tập, mình đã tham gia các sự kiện và cuộc 
 
 ---
 
-### [Event 2 - AWS & GenAI Innovation Workshop]({{< ref "4.2-event2" >}})
-&emsp;**Tên sự kiện:** AWS & GenAI Innovation Workshop
+### [Event 2 - AWS Community Day]({{< ref "4.2-event2" >}})
+&emsp;**Tên sự kiện:** AWS Community Day
 
 &emsp;**Thời gian:** Ngày 13/08/2025
 
