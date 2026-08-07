@@ -8,7 +8,7 @@ pre: " <b> 4. </b> "
 
 Trong quá trình thực tập, mình đã tham gia các sự kiện và cuộc thi kỹ thuật AWS. Mỗi sự kiện đều là một trải nghiệm kịch tính, bổ ích với những bài học thực chiến giá trị và những khoảnh khắc rất tuyệt vời cùng các đồng đội.
 
-### [Event 1 - Cuộc thi Cloud Architect](4.1-Event1/)
+### [Event 1 - Cuộc thi Cloud Architect](4.1-event1/)
 &emsp;**Tên sự kiện:** Cuộc thi Cloud Architect
 
 &emsp;**Thời gian:** Ngày 20/06/2026
@@ -19,7 +19,7 @@ Trong quá trình thực tập, mình đã tham gia các sự kiện và cuộc 
 
 ---
 
-### [Event 2 - GenAI-powered App-DB Modernization workshop](4.2-Event2/)
+### [Event 2 - GenAI-powered App-DB Modernization workshop](4.2-event2/)
 &emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
 
 &emsp;**Thời gian:** Ngày 13/08/2025
