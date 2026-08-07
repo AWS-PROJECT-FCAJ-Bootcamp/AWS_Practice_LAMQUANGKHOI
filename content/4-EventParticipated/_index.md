@@ -8,7 +8,7 @@ pre: " <b> 4. </b> "
 
 During our internship, our team participated in technical AWS events and competitions. Each event was an exciting, highly educational experience that provided valuable real-world architectural lessons and memorable moments with teammates.
 
-### [Event 1 - Cloud Architect Competition](4.1-event1/)
+### [Event 1 - Cloud Architect Competition]({{< ref "4.1-event1" >}})
 &emsp;**Event Name:** Cloud Architect Competition
 
 &emsp;**Date & Time:** June 20, 2026
@@ -19,7 +19,7 @@ During our internship, our team participated in technical AWS events and competi
 
 ---
 
-### [Event 2 - GenAI-powered App-DB Modernization Workshop](4.2-event2/)
+### [Event 2 - GenAI-powered App-DB Modernization Workshop]({{< ref "4.2-event2" >}})
 &emsp;**Event Name:** GenAI-powered App-DB Modernization Workshop
 
 &emsp;**Date & Time:** August 13, 2025
