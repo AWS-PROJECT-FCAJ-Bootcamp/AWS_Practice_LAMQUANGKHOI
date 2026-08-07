@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.163.3">
     <meta name="description" content="">
 <meta name="author" content="thienlh@thienlu.com">
 
-    <link rel="icon" href="/images/amazon-web-services-logo-d111.png?v=1784906808" type="image/png">
+    <link rel="icon" href="/images/amazon-web-services-logo-d111.png?v=1786090145" type="image/png">
 
     <title>Worklog Tuần 6 :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1784906808" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784906808" rel="stylesheet">
-    <link href="/css/hybrid.css?1784906808" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784906808" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784906808" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784906808" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784906808" rel="stylesheet">
-    <link href="/css/theme.css?1784906808" rel="stylesheet">
-    <link href="/css/tabs.css?1784906808" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784906808" rel="stylesheet">
+    <link href="/css/nucleus.css?1786090145" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1786090145" rel="stylesheet">
+    <link href="/css/hybrid.css?1786090145" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1786090145" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1786090145" rel="stylesheet">
+    <link href="/css/auto-complete.css?1786090145" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1786090145" rel="stylesheet">
+    <link href="/css/theme.css?1786090145" rel="stylesheet">
+    <link href="/css/tabs.css?1786090145" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1786090145" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784906808" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1786090145" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784906808"></script>
+    <script src="/js/jquery-3.3.1.min.js?1786090145"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -35,7 +35,7 @@
       }
       
     </style>
-    <link rel="stylesheet" href="/css/custom.css?v=1784906808">
+    <link rel="stylesheet" href="/css/custom.css?v=1786090145">
 
   </head>
   <body class="" data-url="/vi/1-worklog/1.6-week6/">
@@ -58,12 +58,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src='/js/lunr.min.js?1784906808'></script>
-<script type="text/javascript" src='/js/auto-complete.js?1784906808'></script>
+<script type="text/javascript" src='/js/lunr.min.js?1786090145'></script>
+<script type="text/javascript" src='/js/auto-complete.js?1786090145'></script>
 <script type="text/javascript">
-    var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
+    var baseurl = "http:\/\/localhost:1313\/\/vi";
 </script>
-<script type="text/javascript" src='/js/search.js?1784906808'></script>
+<script type="text/javascript" src='/js/search.js?1786090145'></script>
     
   </div>
   
@@ -1282,7 +1282,7 @@
     <li>
       <ul>
         <li><a href="#mục-tiêu-tuần-6">Mục tiêu tuần 6:</a></li>
-        <li><a href="#các-công-việc-cần-triển-khai-trong-tuần-này">Các công việc cần triển khai trong tuần này:</a></li>
+        <li><a href="#các-công-việc-đã-triển-khai-trong-tuần-này">Các công việc đã triển khai trong tuần này:</a></li>
         <li><a href="#kết-quả-đạt-được-tuần-6">Kết quả đạt được tuần 6:</a></li>
       </ul>
     </li>
@@ -1311,16 +1311,17 @@
 
 
 
-	
-<div class="notices warning" ><p>⚠️ <strong>Lưu ý:</strong> Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng <strong>không sao chép nguyên văn</strong> cho bài báo cáo của bạn kể cả warning này.</p>
-</div>
-
-<h3 id="mục-tiêu-tuần-6">Mục tiêu tuần 6:</h3>
+	<h3 id="mục-tiêu-tuần-6">Mục tiêu tuần 6:</h3>
 <ul>
-<li>Kết nối, làm quen với các thành viên trong First Cloud AI Journey.</li>
-<li>Hiểu dịch vụ AWS cơ bản, cách dùng console &amp; CLI.</li>
+<li>Pitching ý tưởng đồ án với các mentor để nhận phản hồi và điều chỉnh sơ đồ kiến trúc AWS phù hợp thực tế.</li>
+<li>Nghiên cứu và đánh giá các dịch vụ AWS cốt lõi bao gồm AWS Amplify, S3, Glue Crawler, Glue Data Catalog, Athena, Lambda Worker và EventBridge.</li>
+<li>Thực hành bài lab và triển khai thử nghiệm AWS Amplify hosting, WAF, phân quyền IAM tối thiểu và tự động hóa EventBridge.</li>
+<li>Thiết kế luồng dữ liệu kép cho hệ thống: luồng tự động cập nhật báo cáo hàng ngày qua EventBridge và luồng truy vấn trực tiếp qua Amazon Athena theo request người dùng.</li>
+<li>Áp dụng 6 trụ cột AWS Well-Architected Framework để tối ưu hóa bảo mật, chi phí và hiệu năng hệ thống.</li>
+<li>Phân chia lại vai trò công việc trong nhóm (FE, BE, CI/CD, Xử lý dữ liệu, Giám sát hệ thống) và cập nhật sơ đồ kiến trúc phân lớp.</li>
+<li>Duy trì tiến độ viết báo cáo nghiên cứu khoa học journal và chủ động lên phương án ứng phó với hạn chế credit AWS bị reset đầu tháng.</li>
 </ul>
-<h3 id="các-công-việc-cần-triển-khai-trong-tuần-này">Các công việc cần triển khai trong tuần này:</h3>
+<h3 id="các-công-việc-đã-triển-khai-trong-tuần-này">Các công việc đã triển khai trong tuần này:</h3>
 <table>
 	<thead>
 			<tr>
@@ -1334,85 +1335,58 @@
 	<tbody>
 			<tr>
 					<td>2</td>
-					<td>- Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập</td>
-					<td>11/08/2025</td>
-					<td>11/08/2025</td>
+					<td>- Pitching ý tưởng đề tài của nhóm cho các anh mentor để thử sai và nhận phản hồi điều chỉnh.<br>- Tìm hiểu 15 dịch vụ AWS chính có liên quan (Amplify, S3, Glue Crawler, Glue Data Catalog, Athena, Lambda Worker,&hellip;) và công cụ Tiny Fish (crawl fetch &amp; search).<br>- Hoàn thành một nửa tiến độ cài đặt AWS Amplify và chuẩn bị môi trường thực thi.</td>
+					<td>27/07/2026</td>
+					<td>27/07/2026</td>
 					<td></td>
 			</tr>
 			<tr>
 					<td>3</td>
-					<td>- Tìm hiểu AWS và các loại dịch vụ <br>  + Compute <br>  + Storage <br>  + Networking <br>  + Database <br>  + &hellip; <br></td>
-					<td>12/08/2025</td>
-					<td>12/08/2025</td>
-					<td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+					<td>- Triển khai thành công bài lab Amplify và nhận hướng dẫn từ anh Minh về việc sử dụng Langfuse để kiểm tra dataset.<br>- Tham khảo sơ đồ từ workshop của anh Minh để tinh chỉnh luồng dữ liệu khép kín cho hệ thống production.<br>- Rà soát bản chất và phân bổ lại 6 service AWS chính (Amplify, S3, Glue Crawler, Glue Data Catalog, Athena, Lambda Worker) nhằm tối ưu chi phí.<br>- Lập kế hoạch phân quyền IAM tối thiểu và phân chia lại công việc chi tiết cho nhóm (Vỹ - FE, Phong - BE, Khôi - CI/CD, Dương - Data, Tuấn Anh - Monitoring).</td>
+					<td>28/07/2026</td>
+					<td>28/07/2026</td>
+					<td></td>
 			</tr>
 			<tr>
 					<td>4</td>
-					<td>- Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console &amp; AWS CLI <br> - <strong>Thực hành:</strong> <br>  + Tạo AWS account <br>  + Cài AWS CLI &amp; cấu hình <br>   + Cách sử dụng AWS CLI</td>
-					<td>13/08/2025</td>
-					<td>13/08/2025</td>
-					<td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+					<td>- Hosting hệ thống qua AWS Amplify, cài đặt WAF phân quyền và hoàn thiện các policy IAM theo từng vai trò công việc.<br>- Trao đổi với anh Quinler về luồng ML prediction training, tối ưu chi phí và áp dụng 6 trụ cột AWS Well-Architected (Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, Sustainability).<br>- Thực hiện ước lượng chi phí hệ thống trên AWS Pricing Calculator và chuẩn bị đẩy hệ thống lên quản lý IAM.</td>
+					<td>29/07/2026</td>
+					<td>29/07/2026</td>
+					<td><a href="https://calculator.aws/">https://calculator.aws/</a></td>
 			</tr>
 			<tr>
 					<td>5</td>
-					<td>- Tìm hiểu EC2 cơ bản: <br>  + Instance types <br>  + AMI <br>  + EBS <br>  + &hellip; <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br></td>
-					<td>14/08/2025</td>
-					<td>15/08/2025</td>
-					<td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+					<td>- Nghiên cứu và thực hành Amazon Athena cùng AWS EventBridge để ứng dụng kéo dữ liệu theo 2 luồng: (1) luồng tự động cập nhật hàng ngày bằng EventBridge lên dashboard, (2) luồng kéo Athena trực tiếp theo request của người dùng.<br>- Hoàn thành bài lab hands-on về AWS EventBridge.</td>
+					<td>30/07/2026</td>
+					<td>30/07/2026</td>
+					<td><a href="https://youtu.be/77zSXuFs4GA?si=Us_XR5-ogDYW77hj">https://youtu.be/77zSXuFs4GA?si=Us_XR5-ogDYW77hj</a></td>
 			</tr>
 			<tr>
 					<td>6</td>
-					<td>- <strong>Thực hành:</strong> <br>  + Tạo EC2 instance <br>  + Kết nối SSH <br>  + Gắn EBS volume</td>
-					<td>15/08/2025</td>
-					<td>15/08/2025</td>
-					<td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+					<td>- Gửi sơ đồ kiến trúc lên nhóm SGU để nhận review và điều chỉnh phân chia các Layer để bài trình bày dễ nhìn hơn.<br>- Đẩy mạnh tiến độ nghiên cứu khoa học: tìm hiểu cách FinRL xử lý chỉ báo kỹ thuật trước khi huấn luyện, tham khảo các bài báo RDX và phát triển phương pháp XAI mới.</td>
+					<td>31/07/2026</td>
+					<td>31/07/2026</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>- Thử nghiệm các dịch vụ chính trong AWS pipeline và giao Tuấn Anh + Dương vẽ lại sơ đồ kiến trúc theo dạng layer để gửi lại nhóm.<br>- Hoàn thành tổng hợp tài liệu báo cáo nghiên cứu khoa học journal.<br>- Ghi nhận khó khăn khi toàn bộ credit AWS bị reset về 0 ngày 01/08 và lập phương án tạo tài khoản mới để tiếp tục chạy lab.</td>
+					<td>01/08/2026</td>
+					<td>01/08/2026</td>
+					<td></td>
 			</tr>
 	</tbody>
 </table>
 <h3 id="kết-quả-đạt-được-tuần-6">Kết quả đạt được tuần 6:</h3>
 <ul>
-<li>
-<p>Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản:</p>
-<ul>
-<li>Compute</li>
-<li>Storage</li>
-<li>Networking</li>
-<li>Database</li>
-<li>&hellip;</li>
-</ul>
-</li>
-<li>
-<p>Đã tạo và cấu hình AWS Free Tier account thành công.</p>
-</li>
-<li>
-<p>Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.</p>
-</li>
-<li>
-<p>Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:</p>
-<ul>
-<li>Access Key</li>
-<li>Secret Key</li>
-<li>Region mặc định</li>
-<li>&hellip;</li>
-</ul>
-</li>
-<li>
-<p>Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:</p>
-<ul>
-<li>Kiểm tra thông tin tài khoản &amp; cấu hình</li>
-<li>Lấy danh sách region</li>
-<li>Xem dịch vụ EC2</li>
-<li>Tạo và quản lý key pair</li>
-<li>Kiểm tra thông tin dịch vụ đang chạy</li>
-<li>&hellip;</li>
-</ul>
-</li>
-<li>
-<p>Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.</p>
-</li>
-<li>
-<p>&hellip;</p>
-</li>
+<li>Trình bày thành công ý tưởng đồ án với các mentor (anh Khiêm, anh Lực, anh Minh, anh Quinler) và tiếp thu các góp ý thiết thực để tinh chỉnh kiến trúc.</li>
+<li>Triển khai thành công AWS Amplify hosting, tích hợp bộ lọc bảo mật WAF và kết nối Langfuse phục vụ kiểm thử dữ liệu/dataset.</li>
+<li>Làm chủ tính chất và cách phối hợp giữa các dịch vụ trọng tâm: Amplify, S3, Glue Crawler, Glue Data Catalog, Athena, Lambda Worker và EventBridge.</li>
+<li>Thiết kế hoàn chỉnh luồng xử lý dữ liệu kép kết hợp giữa tự động hóa EventBridge và truy vấn Athena theo nhu cầu.</li>
+<li>Xây dựng khung phân quyền IAM tối thiểu (least privilege) và vận dụng 6 trụ cột AWS Well-Architected Framework vào quản trị chi phí &amp; an toàn hệ thống.</li>
+<li>Tối ưu hóa phân công công việc cho từng thành viên trong team (FE, BE, CI/CD, Xử lý dữ liệu, Giám sát hệ thống) và bắt đầu hoàn thiện sơ đồ phân lớp.</li>
+<li>Đạt tiến triển tích cực trong nghiên cứu khoa học song song về xử lý chỉ báo kỹ thuật FinRL và mô hình giải thích XAI.</li>
+<li>Nhận diện và phản ứng kịp thời với sự cố reset credit AWS đầu tháng bằng kế hoạch khởi tạo tài khoản dự phòng.</li>
 </ul>
 
 
@@ -2067,19 +2041,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784906808"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784906808"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784906808"></script>
-    <script src="/js/jquery.sticky.js?1784906808"></script>
-    <script src="/js/featherlight.min.js?1784906808"></script>
-    <script src="/js/highlight.pack.js?1784906808"></script>
+    <script src="/js/clipboard.min.js?1786090145"></script>
+    <script src="/js/perfect-scrollbar.min.js?1786090145"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1786090145"></script>
+    <script src="/js/jquery.sticky.js?1786090145"></script>
+    <script src="/js/featherlight.min.js?1786090145"></script>
+    <script src="/js/highlight.pack.js?1786090145"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784906808"></script>
-    <script src="/js/learn.js?1784906808"></script>
-    <script src="/js/hugo-learn.js?1784906808"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1786090145"></script>
+    <script src="/js/learn.js?1786090145"></script>
+    <script src="/js/hugo-learn.js?1786090145"></script>
     
         
-            <script src="/mermaid/mermaid.js?1784906808"></script>
+            <script src="/mermaid/mermaid.js?1786090145"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

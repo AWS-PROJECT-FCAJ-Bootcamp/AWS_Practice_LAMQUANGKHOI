@@ -5,111 +5,107 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+# Vietnam Financial Distress Prediction System  
+## AWS Cloud & Serverless Platform for Automated Financial Data Ingestion, Analysis, and Early Financial Distress Prediction  
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+### 1. Executive Summary  
+The **Vietnam Financial Distress Prediction System** is designed as an end-to-end solution built on AWS Cloud to automate the ingestion, normalization, and analysis of financial statement data and market prices for non-financial companies listed on Vietnam's three main stock exchanges (HOSE, HNX, UPCOM). The system leverages a Serverless AWS Architecture combined with Machine Learning models (Logistic Regression, Random Forest, XGBoost, LightGBM, CatBoost) to calculate financial ratio matrices (Liquidity, Profitability, Leverage, Size & Growth), automate risk labeling (Rule-based & Altman Z-Score Emerging Market variant), and provide early warning alerts for financial distress/bankruptcy risk. The platform integrates a fullstack Web Dashboard (AWS Amplify, Next.js/React), secured by Amazon Cognito, governed by Amazon API Gateway, and features automated email notifications via Amazon SES for investors, financial analysts, and risk managers.
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+### 2. Problem Statement  
+*Current Issues*  
+Financial statement data in Vietnam is scattered across multiple heterogeneous sources (vnstock, TCBS, CafeF, Vietstock, VCI, MAS, KBS) with inconsistent data formats (Long-form vs. Wide-form) and fragmented indicator definitions. Manual data collection and financial analysis are highly time-consuming, error-prone, and unscalable for tracking over 1,600+ listed companies. Furthermore, current analytical tools lack automated regulatory labeling and specialized early-warning distress prediction models tailored to the Vietnamese stock market.  
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+*Solution*  
+The platform utilizes **Amazon EventBridge** and **AWS Step Functions** to orchestrate automated ingestion pipelines via **AWS Lambda / ECS Tasks** that crawl/fetch data from financial APIs and store raw datasets in **Amazon S3 (raw)**. ETL pipelines driven by **AWS Glue Jobs** perform schema normalization, missing value handling, and Winsorization, storing cleaned datasets in Parquet format in **Amazon S3 (curated)**. **AWS Glue Crawlers** and **Glue Data Catalog** maintain updated metadata schemas for instant SQL querying with **Amazon Athena**. A specialized ratio and labeling engine calculates financial metrics, applying both Vietnamese regulatory rules (consecutive 2-year net loss, negative equity, EBIT < Interest Expense for 2 years, negative OCF for 3 years) and Altman Z-Score models. A fullstack web dashboard hosted on **AWS Amplify** with **Amazon Cognito** authentication provides interactive visual analytics, while **Amazon SES** automatically dispatches email alerts when companies enter the Distress Zone.  
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+*Benefits and Return on Investment (ROI)*  
+- **100% Data Pipeline Automation**: Encapsulates the entire workflow from ingestion, cleansing, Data Lake storage, and feature engineering to ML prediction.  
+- **Early & Accurate Alerts**: Empowers investors and financial institutions to detect bankruptcy risk 1–2 years in advance with high Recall rates.  
+- **Cost-Optimized Serverless Architecture**: Operates on a pay-as-you-go AWS Serverless model, costing approximately $1.50 – $3.00 USD/month for production workloads.  
+- **High Scalability**: Seamlessly scales to process historical and quarterly data for 1,600+ listed companies across HOSE, HNX, and UPCOM.  
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+### 3. Solution Architecture  
+The platform follows a 5-tier AWS Serverless Architecture:  
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+![Vietnam Financial Distress System Architecture](/images/2-Proposal/architecture_overview.png)  
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+![Data Pipeline Architecture](/images/2-Proposal/pipeline_architecture.png)  
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+*AWS Services Used*  
+- **Amazon EventBridge**: Triggers scheduled cron jobs for quarterly/annual financial data ingestion.  
+- **AWS Step Functions**: Orchestrates multi-threaded ingestion workflows, retries, and checkpointing.  
+- **AWS Lambda / ECS**: Executes crawler scripts/API calls to vnstock, TCBS, CafeF, and serves backend API requests.  
+- **Amazon S3**: Data Lake storage containing 2 buckets (S3 raw for JSON/CSV and S3 curated for Parquet files).  
+- **AWS Glue**: Runs Python/Spark ETL jobs for data transformation, Glue Crawlers for schema discovery, and Glue Data Catalog for metadata storage.  
+- **Amazon Athena**: Provides serverless SQL queries directly on S3 curated Parquet data.  
+- **AWS Amplify**: Hosts the web frontend dashboard (React/Next.js).  
+- **Amazon Cognito**: Manages user authentication, authorization (Admin / Guest / Analyst), and JWT tokens.  
+- **Amazon API Gateway**: Secures RESTful API endpoints between Frontend and Backend Lambda.  
+- **AWS WAF**: Protects API Gateway and Amplify against web vulnerabilities (DDoS, SQL Injection).  
+- **Amazon SES**: Sends automated email notifications when financial distress risks are flagged.  
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+*Component Design*  
+- **Ingestion Layer**: EventBridge triggers Step Functions to call Lambda/ECS Tasks for pulling 3 main financial statements (Balance Sheet, Income Statement, Cash Flow) and stock prices, strictly filtering out financial sectors (Banks, Securities, Insurance, Investment Funds).  
+- **Storage Layer**: S3 Raw stores unparsed JSON/CSV files; S3 Curated stores normalized, cleaned, and labeled Parquet data partitioned by year/quarter.  
+- **Processing & ETL Layer**: AWS Glue Jobs normalize financial indicator names, filter companies with at least 5 years of continuous data, apply Winsorization (1%-99%), calculate financial metrics (CR, WCTA, ROA, ROE, EBIT_REV, DAR, STDR, LTDR, LogAsset, MC_Debt), and assign distress labels.  
+- **Query & ML Layer**: Glue Crawlers update Data Catalog schemas; Athena serves ad-hoc SQL queries and backend API calls. Machine Learning models (Logistic Regression, XGBoost, Random Forest, CatBoost) are trained using time-series split strategies (2018-2022 train, 2023-2025 test).  
+- **User Interface & Alerting**: Amplify hosts the interactive Web Dashboard; API Gateway + Lambda service manage application state; Cognito enforces access control; SES triggers real-time risk alerts.  
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+### 4. Technical Implementation  
+*Implementation Phases*  
+The project is executed across 4 main phases:  
+1. **Research & Architecture Design (Month 1)**: Survey financial statement structures across VCI, MAS, KBS, and vnstock; define the 5-tier AWS Serverless architecture; establish Rule-based and Z-Score labeling criteria.  
+2. **Data Pipeline & Storage Construction (Month 2)**: Provision S3 Raw/Curated buckets; develop Lambda Crawlers, Step Functions workflows, Glue ETL Jobs, and Glue Data Catalog + Athena query layer.  
+3. **Engine Development & ML Pipeline (Month 3)**: Implement Ratio Engine, Distress Labeling Engine, and train/evaluate ML models (XGBoost, Random Forest) evaluated primarily on Recall & AUC-ROC metrics.  
+4. **Web Dashboard, Auth & Alerting Deployment (Month 4)**: Build React/Next.js UI on Amplify; integrate Cognito Auth, API Gateway backend, Amazon SES notifications, and conduct End-to-End testing.  
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+*Technical Requirements*  
+- **Data Engine**: Python 3.11+, `vnstock`, `pandas`, `pyarrow`, `numpy`, `scikit-learn`, `xgboost`, `lightgbm`, `catboost`.  
+- **AWS Services & Infrastructure**: AWS CDK / SAM / Terraform for Infrastructure as Code (IaC).  
+- **Backend & Web App**: FastAPI / Node.js for Lambda Service, React / Next.js for Frontend, Zustand for State Management, Tailwind CSS / Vanilla CSS for styling.  
+- **Security & Standards**: SSL/TLS encryption, WAF, OAuth2 / JWT with Amazon Cognito, and Least Privilege IAM roles.  
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+### 5. Timeline & Milestones  
+- **Milestone 1 (Month 1)**: Architecture proposal approved, BCTC schema normalized, and data lake design finalized.  
+- **Milestone 2 (Month 2)**: Data Ingestion pipeline (Step Functions + Lambda + S3) and Glue ETL Jobs deployed.  
+- **Milestone 3 (Month 3)**: Ratio Engine, Distress Labeling (Altman Z-Score), and ML training pipeline operational.  
+- **Milestone 4 (Month 4)**: Web Dashboard (Amplify + Cognito), API Gateway backend, SES Alerts integrated, and E2E verified.  
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+### 6. Budget Estimation  
+You can view the estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
+Or download the [Budget Estimation File](../attachments/budget_estimation.pdf).  
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+*Infrastructure Costs*  
+- Amazon S3 Standard (Raw & Curated 10 GB, 5,000 requests): $0.30 USD/month  
+- AWS Lambda (Inbound Ingestion & Backend API 50,000 requests): $0.20 USD/month  
+- AWS Step Functions & EventBridge: $0.10 USD/month  
+- AWS Glue ETL Jobs & Crawlers (scheduled monthly/quarterly): $0.80 USD/month  
+- Amazon Athena (Scanned < 10 GB Parquet/month): $0.05 USD/month  
+- AWS Amplify & Amazon Cognito (Guest & User access): $0.35 USD/month  
+- Amazon API Gateway & AWS WAF: $0.15 USD/month  
+- Amazon SES (Email Alerts < 1,000 emails/month): $0.05 USD/month  
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+*Total*: ~$2.00 USD/month (~$24.00 USD/12 months)  
+- **Data & Licensing Costs**: $0 USD (leveraging open-source `vnstock` and open libraries).  
 
-Total: $0.7/month, $8.40/12 months
+### 7. Risk Assessment  
+*Risk Matrix*  
+- Breaking changes in source financial APIs/Websites (vnstock/CafeF/TCBS): High impact, medium probability.  
+- Missing or inaccurate financial data from sources: Medium impact, high probability.  
+- Label imbalance (Imbalanced Dataset between healthy and distressed firms): High impact, high probability.  
+- Uncontrolled AWS costs due to unoptimized Athena queries/Glue runs: Medium impact, low probability.  
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+*Mitigation Strategies*  
+- Data Sources: Build multi-source ingestion mechanisms (VCI, MAS, KBS) with automated fallback parsers.  
+- Missing Data: Require a strict 5-year continuous dataset threshold, filter out financial sectors, and apply Winsorization.  
+- Imbalanced Dataset: Utilize SMOTE / Class Weighting and prioritize Recall optimization for Class 1 (Distress).  
+- AWS Costs: Set up AWS Budget Alerts and enforce Parquet partitioning to minimize Athena scanned data.  
 
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+*Contingency Plans*  
+- Maintain Local/S3 Parquet backups for rapid recovery in case of ETL failure.  
+- Use AWS CloudFormation / CDK scripts to redeploy the entire Serverless infrastructure on demand.  
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
-
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
-
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+### 8. Expected Outcomes  
+*Technical Improvements*: Automated 100% of the Data Lake & ML Pipeline on AWS, eliminating manual BCTC analytical workflows. Early prediction of financial distress achieves Recall > 85% and AUC-ROC > 0.88 on test datasets.  
+*Long-term Value*: Provides a standardized financial dataset for Vietnamese equities, scalable for future valuation, Credit Scoring, or Quantitative Trading research.

@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.163.3">
     <meta name="description" content="">
 <meta name="author" content="thienlh@thienlu.com">
 
-    <link rel="icon" href="/images/amazon-web-services-logo-d111.png?v=1784906802" type="image/png">
+    <link rel="icon" href="/images/amazon-web-services-logo-d111.png?v=1786103141" type="image/png">
 
     <title>Blog 2 :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784906802" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784906802" rel="stylesheet">
-    <link href="/css/hybrid.css?1784906802" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784906802" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784906802" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784906802" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784906802" rel="stylesheet">
-    <link href="/css/theme.css?1784906802" rel="stylesheet">
-    <link href="/css/tabs.css?1784906802" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784906802" rel="stylesheet">
+    <link href="/css/nucleus.css?1786103141" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1786103141" rel="stylesheet">
+    <link href="/css/hybrid.css?1786103141" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1786103141" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1786103141" rel="stylesheet">
+    <link href="/css/auto-complete.css?1786103141" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1786103141" rel="stylesheet">
+    <link href="/css/theme.css?1786103141" rel="stylesheet">
+    <link href="/css/tabs.css?1786103141" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1786103141" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784906802" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1786103141" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784906802"></script>
+    <script src="/js/jquery-3.3.1.min.js?1786103141"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -35,7 +35,7 @@
       }
       
     </style>
-    <link rel="stylesheet" href="/css/custom.css?v=1784906802">
+    <link rel="stylesheet" href="/css/custom.css?v=1786103141">
 
   </head>
   <body class="" data-url="/3-blogsposted/3.2-blog2/">
@@ -58,12 +58,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src='/js/lunr.min.js?1784906802'></script>
-<script type="text/javascript" src='/js/auto-complete.js?1784906802'></script>
+<script type="text/javascript" src='/js/lunr.min.js?1786103141'></script>
+<script type="text/javascript" src='/js/auto-complete.js?1786103141'></script>
 <script type="text/javascript">
-    var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/";
+    var baseurl = "http:\/\/localhost:1313\/";
 </script>
-<script type="text/javascript" src='/js/search.js?1784906802'></script>
+<script type="text/javascript" src='/js/search.js?1786103141'></script>
     
   </div>
   
@@ -1277,7 +1277,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#reference-sources">Reference Sources:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -1301,25 +1309,24 @@
 
 
 
-	
-<div class="notices warning" ><p>⚠️ <strong>Note:</strong> The information below is for reference purposes only. Please <strong>do not copy verbatim</strong> for your report, including this warning.</p>
-</div>
-
-<h1 id="session-policies-in-amazon-eks-pod-identity">SESSION POLICIES IN AMAZON EKS POD IDENTITY</h1>
-<p>Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.</p>
-<p>Key points to know:</p>
+	<h1 id="automating-ml-lifecycle-with-amazon-sagemaker-ai-in-financial-risk-prediction">AUTOMATING ML LIFECYCLE WITH AMAZON SAGEMAKER AI IN FINANCIAL RISK PREDICTION</h1>
+<p>Following the deployment of our financial Data Lake, the next milestone in our research journey was exploring artificial intelligence solutions for early corporate financial distress prediction. Our team selected Amazon SageMaker AI — a fully managed AWS machine learning platform designed to automate the entire end-to-end ML lifecycle. Here are the core key takeaways our team synthesized regarding the implementation of SageMaker AI:</p>
 <ul>
-<li>A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.</li>
-<li>Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.</li>
-<li>Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.</li>
-<li>Supports both same-account and cross-account (via IAM role chaining).</li>
-<li>Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.</li>
-<li>Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.</li>
+<li><strong>Centralized Feature Governance via SageMaker Feature Store</strong>: Our team registered normalized financial ratio metrics (CR, ROA, ROE, DAR, WCTA, &hellip;) and target distress labels from our S3 Data Lake into SageMaker Feature Store, enabling consistent feature reusability across modeling iterations.</li>
+<li><strong>Model Experimentation in SageMaker Studio</strong>: Utilizing SageMaker Studio and Autopilot, our team evaluated popular classification algorithms including XGBoost, Random Forest, Logistic Regression, and LightGBM to identify optimal performance on Vietnamese financial datasets.</li>
+<li><strong>Time-Series Training and Recall Optimization</strong>: Our team adopted a Time-Series Split strategy (2018–2022 Train, 2023–2025 Test) to prevent future data leakage. In financial distress prediction, our team prioritized optimizing the Recall metric for the distressed class (<code>distress = 1</code>) to eliminate catastrophic false negatives.</li>
+<li><strong>Cost-Optimized Serverless Endpoint Deployment</strong>: Our team packaged approved models into SageMaker Serverless Endpoints, allowing prediction APIs to scale automatically during Dashboard request bursts and scale down to zero when idle, cutting inference infrastructure expenses by up to 70%.</li>
+<li><strong>Standardized MLOps Governance with Model Registry and Monitor</strong>: Our team versioned approved models in SageMaker Model Registry and configured SageMaker Model Monitor to detect Data Drift upon new quarterly reporting releases, triggering automated retraining alerts.</li>
 </ul>
-<p>This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).</p>
-<p>&hellip;Image&hellip;</p>
-<p>&hellip;Link&hellip;</p>
-<p>&hellip;Guide&hellip;</p>
+<p>Through this article, our team hopes to highlight the essential principles of leveraging Amazon SageMaker AI to construct an automated, standardized, and cost-optimized MLOps workflow for corporate financial risk analytics.</p>
+<p><img src="/images/Blog%202.drawio.png" alt="Amazon SageMaker AI Training and Deployment Workflow Diagram"></p>
+<hr>
+<h3 id="reference-sources">Reference Sources:</h3>
+<ul>
+<li><a href="https://aws.amazon.com/sagemaker/">Amazon SageMaker AI Official Homepage</a></li>
+<li><a href="https://docs.aws.amazon.com/sagemaker/">AWS SageMaker Technical Documentation</a></li>
+<li><a href="https://aws.amazon.com/blogs/machine-learning/">AWS Machine Learning Official Blog</a></li>
+</ul>
 
 
 
@@ -1976,19 +1983,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784906802"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784906802"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784906802"></script>
-    <script src="/js/jquery.sticky.js?1784906802"></script>
-    <script src="/js/featherlight.min.js?1784906802"></script>
-    <script src="/js/highlight.pack.js?1784906802"></script>
+    <script src="/js/clipboard.min.js?1786103141"></script>
+    <script src="/js/perfect-scrollbar.min.js?1786103141"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1786103141"></script>
+    <script src="/js/jquery.sticky.js?1786103141"></script>
+    <script src="/js/featherlight.min.js?1786103141"></script>
+    <script src="/js/highlight.pack.js?1786103141"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784906802"></script>
-    <script src="/js/learn.js?1784906802"></script>
-    <script src="/js/hugo-learn.js?1784906802"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1786103141"></script>
+    <script src="/js/learn.js?1786103141"></script>
+    <script src="/js/hugo-learn.js?1786103141"></script>
     
         
-            <script src="/mermaid/mermaid.js?1784906802"></script>
+            <script src="/mermaid/mermaid.js?1786103141"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

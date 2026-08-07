@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# NHẬT KÝ CÔNG VIỆC
-
 Phần này ghi lại quá trình học AWS, nghiên cứu, điều phối nhóm và phát triển đồ án data lake tài chính của tôi. Mỗi báo cáo tuần bao gồm mục tiêu, công việc đã thực hiện, ngày triển khai, nguồn tài liệu tham khảo và kết quả chính đạt được.
 
 ### Worklog hiện có:

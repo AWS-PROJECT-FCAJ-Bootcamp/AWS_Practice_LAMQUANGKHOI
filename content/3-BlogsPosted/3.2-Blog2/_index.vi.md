@@ -1,31 +1,28 @@
 ---
 title: "Blog 2"
 date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# SESSION POLICIES TRONG AMAZON EKS POD IDENTITY
+# TỰ ĐỘNG HÓA VÒNG ĐỜI ML VỚI AMAZON SAGEMAKER AI TRONG PHÂN TÍCH RỦI RO TÀI CHÍNH
 
-Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+Sau khi hoàn thiện Data Lake lưu trữ dữ liệu tài chính, bước tiếp theo trong hành trình nghiên cứu của nhóm mình là tìm kiếm giải pháp ứng dụng trí tuệ nhân tạo để dự báo sớm nguy cơ kiệt quệ tài chính doanh nghiệp. Nhóm mình đã chọn nghiên cứu và triển khai Amazon SageMaker AI — dịch vụ Machine Learning được quản lý hoàn toàn bởi AWS giúp tự động hóa toàn bộ vòng đời mô hình. Dưới đây là những điểm cốt lõi quan trọng nhất về việc ứng dụng SageMaker AI mà nhóm mình đúc kết để người đọc dễ dàng nắm bắt:
 
-Các điểm chính cần nắm:
+* **Quản lý tính năng tập trung với SageMaker Feature Store**: Nhóm mình lưu trữ và quản lý thống nhất tập các chỉ số tài chính đã làm sạch (CR, ROA, ROE, DAR, WCTA, ...) và nhãn rủi ro kiệt quệ tài chính từ S3 Data Lake vào Feature Store, giúp tái sử dụng tính năng giữa các thử nghiệm mô hình một cách nhất quán.
+* **Thử nghiệm và lựa chọn mô hình trong SageMaker Studio**: Thông qua môi trường SageMaker Studio và Autopilot, nhóm mình đã tiến hành thử nghiệm các thuật toán phân loại phổ biến như XGBoost, Random Forest, Logistic Regression và LightGBM để đánh giá khả năng dự đoán trên tập dữ liệu tài chính Việt Nam.
+* **Huấn luyện theo chuỗi thời gian và tối ưu chỉ số Recall**: Nhóm mình áp dụng chiến lược phân chia dữ liệu Time-Series Split (2018-2022 Train, 2023-2025 Test) nhằm chống rò rỉ dữ liệu tương lai. Trong bài toán rủi ro tài chính, nhóm mình đặt ưu tiên hàng đầu vào việc tối ưu metric Recall đối với nhóm doanh nghiệp rủi ro (`distress = 1`) nhằm tránh bỏ sót các doanh nghiệp có nguy cơ phá sản.
+* **Triển khai Serverless Endpoints tối ưu chi phí**: Nhóm mình đóng gói mô hình tối ưu dưới dạng SageMaker Serverless Endpoints, cho phép API tự động mở rộng khi nhận request từ Web Dashboard và tự động hạ tài nguyên về 0 khi không có lưu lượng truy cập, giúp tiết kiệm tới 70% chi phí hạ tầng.
+* **Quản trị MLOps chuẩn mực với Model Registry và Model Monitor**: Nhóm mình quản lý các phiên bản mô hình đã duyệt qua SageMaker Model Registry, đồng thời thiết lập SageMaker Model Monitor để tự động phát hiện Data Drift khi doanh nghiệp cập nhật BCTC quý mới và đưa ra cảnh báo cần tái huấn luyện mô hình.
 
-* Session policy là một IAM policy inline được chỉ định khi tạo hoặc cập nhật Pod Identity association.
-* Quyền hiệu quả = intersection (giao) giữa permissions của IAM role và session policy → session policy chỉ có thể thu hẹp, không thể mở rộng quyền.
-* Giúp tránh tình trạng over-permissioning khi reuse chung một IAM role cho nhiều workloads có nhu cầu khác nhau.
-* Hỗ trợ cả same-account và cross-account (qua IAM role chaining).
-* Giảm đáng kể số lượng IAM roles cần quản lý, tránh chạm giới hạn quota IAM trong cluster lớn.
-* Cấu hình dễ dàng qua AWS Management Console, AWS CLI hoặc AWS SDK khi tạo association giữa Kubernetes ServiceAccount và IAM role.
+Qua bài viết này, nhóm mình hy vọng đã cung cấp những điểm cốt lõi nhất về cách ứng dụng Amazon SageMaker AI để xây dựng quy trình MLOps tự động, chuẩn hóa và tối ưu cho các bài toán phân tích rủi ro tài chính doanh nghiệp.
 
-Tính năng này đặc biệt hữu ích khi bạn có nhiều ứng dụng chạy trên cùng một IAM role nhưng cần giới hạn quyền khác nhau (ví dụ: một pod chỉ đọc S3 bucket cụ thể, pod khác chỉ gọi một số API nhất định).
+![Sơ đồ quy trình huấn luyện và triển khai mô hình với Amazon SageMaker AI](/images/Blog%202.drawio.png)
 
-...Hình ảnh...
+---
 
-...Link...
-
-...Hướng dẫn...
+### Nguồn tham khảo:
+* [Trang chủ sản phẩm Amazon SageMaker AI](https://aws.amazon.com/sagemaker/)
+* [Tài liệu kỹ thuật chính thức AWS SageMaker Documentation](https://docs.aws.amazon.com/sagemaker/)
+* [Bài viết chuyên sâu AWS Machine Learning Blog](https://aws.amazon.com/blogs/machine-learning/)

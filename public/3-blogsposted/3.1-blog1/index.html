@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.163.3">
     <meta name="description" content="">
 <meta name="author" content="thienlh@thienlu.com">
 
-    <link rel="icon" href="/images/amazon-web-services-logo-d111.png?v=1784906801" type="image/png">
+    <link rel="icon" href="/images/amazon-web-services-logo-d111.png?v=1786102261" type="image/png">
 
     <title>Blog 1 :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784906801" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784906801" rel="stylesheet">
-    <link href="/css/hybrid.css?1784906801" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784906801" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784906801" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784906801" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784906801" rel="stylesheet">
-    <link href="/css/theme.css?1784906801" rel="stylesheet">
-    <link href="/css/tabs.css?1784906801" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784906801" rel="stylesheet">
+    <link href="/css/nucleus.css?1786102261" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1786102261" rel="stylesheet">
+    <link href="/css/hybrid.css?1786102261" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1786102261" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1786102261" rel="stylesheet">
+    <link href="/css/auto-complete.css?1786102261" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1786102261" rel="stylesheet">
+    <link href="/css/theme.css?1786102261" rel="stylesheet">
+    <link href="/css/tabs.css?1786102261" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1786102261" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784906801" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1786102261" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784906801"></script>
+    <script src="/js/jquery-3.3.1.min.js?1786102261"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -35,7 +35,7 @@
       }
       
     </style>
-    <link rel="stylesheet" href="/css/custom.css?v=1784906801">
+    <link rel="stylesheet" href="/css/custom.css?v=1786102261">
 
   </head>
   <body class="" data-url="/3-blogsposted/3.1-blog1/">
@@ -58,12 +58,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src='/js/lunr.min.js?1784906801'></script>
-<script type="text/javascript" src='/js/auto-complete.js?1784906801'></script>
+<script type="text/javascript" src='/js/lunr.min.js?1786102261'></script>
+<script type="text/javascript" src='/js/auto-complete.js?1786102261'></script>
 <script type="text/javascript">
-    var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/";
+    var baseurl = "http:\/\/localhost:1313\/";
 </script>
-<script type="text/javascript" src='/js/search.js?1784906801'></script>
+<script type="text/javascript" src='/js/search.js?1786102261'></script>
     
   </div>
   
@@ -1277,7 +1277,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#resources--publication-links">Resources &amp; Publication Links:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -1301,25 +1309,25 @@
 
 
 
-	
-<div class="notices warning" ><p>⚠️ <strong>Note:</strong> The information below is for reference purposes only. Please <strong>do not copy verbatim</strong> for your report, including this warning.</p>
-</div>
-
-<h1 id="session-policies-in-amazon-eks-pod-identity">SESSION POLICIES IN AMAZON EKS POD IDENTITY</h1>
-<p>Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.</p>
-<p>Key points to know:</p>
+	<h1 id="automated-vietnamese-financial-data-ingestion-and-analysis-platform-on-aws-serverless">AUTOMATED VIETNAMESE FINANCIAL DATA INGESTION AND ANALYSIS PLATFORM ON AWS SERVERLESS</h1>
+<p>During the development of our financial data analytics project covering companies listed on Vietnam&rsquo;s stock exchanges (HOSE, HNX, UPCOM), our team realized that manually ingesting and normalizing financial statements from scattered providers represented the primary operational bottleneck. To solve this challenge, our team built an automated data ingestion, cleansing, and ratio calculation platform based on AWS Serverless Cloud Architecture. Here are the core key takeaways our team wants readers to remember about this platform:</p>
 <ul>
-<li>A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.</li>
-<li>Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.</li>
-<li>Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.</li>
-<li>Supports both same-account and cross-account (via IAM role chaining).</li>
-<li>Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.</li>
-<li>Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.</li>
+<li><strong>100% Automated Multi-Source Ingestion Pipeline</strong>: Our team utilized Amazon EventBridge for quarterly/annual cron scheduling, AWS Step Functions for parallel workflow orchestration with retry mechanisms, and AWS Lambda / ECS Tasks wrapping <code>vnstock</code> scripts to extract full Balance Sheets, Income Statements, Cash Flow Statements, and stock prices from VCI, MAS, and KBS into an Amazon S3 Raw Data Lake.</li>
+<li><strong>ETL Cleansing and Financial Data Normalization</strong>: Our team implemented AWS Glue Jobs to filter out specialized financial sectors (Banks, Securities, Insurance), map hundreds of heterogeneous indicator names into a unified canonical schema, enforce a minimum continuous 5-year data threshold, and apply Winsorization (1%-99%) to eliminate statistical noise.</li>
+<li><strong>Optimized Data Lake Storage and High-Speed SQL Queries</strong>: Cleaned data is written into Snappy-compressed Apache Parquet format partitioned by year and quarter within an S3 Curated bucket. Integrated with the AWS Glue Data Catalog, our system enables Amazon Athena to execute serverless SQL queries with exceptional speed and minimal cost.</li>
+<li><strong>Financial Ratio Matrix and Corporate Distress Labeling Engine</strong>: Our team engineered automated calculation engines for liquidity, profitability, leverage, and growth ratio matrices. Concurrently, the platform applies dual distress labeling mechanisms combining Vietnamese regulatory rules (consecutive net losses, negative equity, insufficient EBIT) with Altman Z-Score models for emerging markets.</li>
+<li><strong>Web Dashboard UI and Automated Risk Notification System</strong>: All backend services are exposed via Amazon API Gateway, authenticated through Amazon Cognito, visualized on an interactive Web Dashboard hosted on AWS Amplify, and configured with Amazon SES to dispatch automated email alerts whenever monitored equities enter the financial distress zone.</li>
 </ul>
-<p>This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).</p>
-<p>&hellip;Image&hellip;</p>
-<p>&hellip;Link&hellip;</p>
-<p>&hellip;Guide&hellip;</p>
+<p>Through this article, our team hopes to provide a clear perspective on leveraging AWS Serverless architecture to solve large-scale financial data processing challenges in an automated, cost-effective, and highly reliable manner.</p>
+<p><img src="/images/3layer_v1.0.drawio.png" alt="AWS Serverless Architecture Diagram"></p>
+<hr>
+<h3 id="resources--publication-links">Resources &amp; Publication Links:</h3>
+<ul>
+<li><strong>Official Post on AWS Study Group</strong>:
+<img src="/images/Post_Blog_1.png" alt="Official Post on AWS Study Group"></li>
+<li><strong>Live System Demo Link</strong>: <a href="">Live System Link</a></li>
+<li><strong>Detailed Installation &amp; Operational Guide</strong>: <a href="">User &amp; Deployment Guide Link</a></li>
+</ul>
 
 
 
@@ -1973,19 +1981,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784906802"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784906802"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784906802"></script>
-    <script src="/js/jquery.sticky.js?1784906802"></script>
-    <script src="/js/featherlight.min.js?1784906802"></script>
-    <script src="/js/highlight.pack.js?1784906802"></script>
+    <script src="/js/clipboard.min.js?1786102261"></script>
+    <script src="/js/perfect-scrollbar.min.js?1786102261"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1786102261"></script>
+    <script src="/js/jquery.sticky.js?1786102261"></script>
+    <script src="/js/featherlight.min.js?1786102261"></script>
+    <script src="/js/highlight.pack.js?1786102261"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784906802"></script>
-    <script src="/js/learn.js?1784906802"></script>
-    <script src="/js/hugo-learn.js?1784906802"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1786102261"></script>
+    <script src="/js/learn.js?1786102261"></script>
+    <script src="/js/hugo-learn.js?1786102261"></script>
     
         
-            <script src="/mermaid/mermaid.js?1784906802"></script>
+            <script src="/mermaid/mermaid.js?1786102261"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

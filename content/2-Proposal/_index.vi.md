@@ -5,104 +5,107 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
-
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+# Vietnam Financial Distress Prediction System  
+## Nền tảng AWS Cloud & Serverless tự động hóa thu thập, phân tích và dự đoán nguy cơ kiệt quệ tài chính doanh nghiệp  
 
 ### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+Vietnam Financial Distress Prediction System được thiết kế nhằm xây dựng một giải pháp toàn diện trên nền tảng AWS Cloud, giúp tự động thu thập, chuẩn hóa dữ liệu báo cáo tài chính (BCTC) và giá thị trường của các doanh nghiệp niêm yết trên 3 sàn chứng khoán Việt Nam (HOSE, HNX, UPCOM). Hệ thống ứng dụng kiến trúc AWS Serverless kết hợp các mô hình Machine Learning (Logistic Regression, Random Forest, XGBoost, LightGBM, CatBoost) để tính toán bộ chỉ số tài chính (Liquidity, Profitability, Leverage, Size & Growth), tự động gán nhãn rủi ro (Rule-based & Altman Z-Score Emerging Market), và phát hiện sớm nguy cơ kiệt quệ tài chính (Financial Distress) / phá sản. Nền tảng tích hợp Web Dashboard (AWS Amplify, Next.js/React), bảo mật với Amazon Cognito, phân quyền API qua API Gateway và gửi cảnh báo tự động qua Amazon SES cho các nhà đầu tư, chuyên viên phân tích tài chính và quản trị rủi ro.  
 
 ### 2. Tuyên bố vấn đề  
 *Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+Hiện nay, dữ liệu tài chính tại Việt Nam rải rác trên nhiều nguồn (vnstock, TCBS, CafeF, Vietstock, VCI, MAS, KBS) với định dạng không nhất quán (Long-form vs Wide-form), nhiều chỉ tiêu bị phân mảnh hoặc thiếu hụt. Việc thu thập và phân tích BCTC thủ công tiêu tốn rất nhiều thời gian, dễ phát sinh sai sót và không thể theo dõi liên tục hàng nghìn doanh nghiệp. Bên cạnh đó, các công cụ phân tích hiện tại thiếu khả năng gán nhãn tự động theo quy định và mô hình cảnh báo sớm kiệt quệ tài chính chuyên biệt cho thị trường chứng khoán Việt Nam.  
 
 *Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+Nền tảng tận dụng **Amazon EventBridge** và **AWS Step Functions** để điều phối các tiến trình cào dữ liệu tự động từ các nguồn API/web qua **AWS Lambda / ECS Task**, lưu trữ dữ liệu thô vào **Amazon S3 (raw)**. Tiến trình ETL bằng **AWS Glue Job** thực hiện chuẩn hóa chỉ tiêu, xử lý dữ liệu khuyết thiếu (missing data) và Winsorization, sau đó lưu dữ liệu đã làm sạch dưới dạng Parquet vào **Amazon S3 (curated)**. **AWS Glue Crawler** và **Glue Data Catalog** tự động cập nhật metadata, cho phép **Amazon Athena** truy vấn SQL tức thì. Bộ engine tính toán chỉ số và gán nhãn tích hợp cả chuẩn Rule-based thực tế tại Việt Nam (lỗ lũy kế 2 năm, VCSH âm, EBIT không đủ trả lãi vay, OCF âm 3 năm) và chỉ số Altman Z-Score. Ứng dụng web fullstack hosted trên **AWS Amplify** với **Amazon Cognito** quản lý xác thực và **Amazon SES** tự động gửi email cảnh báo khi Z-Score rơi vào vùng nguy hiểm (Distress Zone).  
 
 *Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+- **Tự động hóa 100% luồng dữ liệu**: Đóng gói toàn bộ quy trình từ cào dữ liệu, làm sạch, lưu trữ Data Lake đến gán nhãn và dự đoán ML.  
+- **Cảnh báo sớm & Chính xác**: Giúp nhà đầu tư và tổ chức tài chính phát hiện rủi ro kiệt quệ tài chính trước 1–2 năm với chỉ số Recall cao.  
+- **Tối ưu chi phí vận hành (Serverless)**: Chi phí cơ sở hạ tầng cực kỳ tiết kiệm nhờ mô hình pay-as-you-go của AWS Serverless, ước tính khoảng 1,50 – 3,00 USD/tháng cho quy mô vận hành chuẩn.  
+- **Khả năng mở rộng vượt trội**: Sẵn sàng xử lý dữ liệu cho hơn 1.600+ doanh nghiệp niêm yết trên cả 3 sàn HOSE, HNX, UPCOM.  
 
 ### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+Hệ thống áp dụng kiến trúc Serverless 5 phân vùng chuyên biệt trên AWS Cloud:  
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+![Vietnam Financial Distress System Architecture](/images/2-Proposal/architecture_overview.png)  
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+![Data Pipeline Architecture](/images/2-Proposal/pipeline_architecture.png)  
 
 *Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+- *Amazon EventBridge*: Kích hoạt cron schedule định kỳ cho luồng thu thập dữ liệu BCTC quý/năm.  
+- *AWS Step Functions*: Điều phối workflow thu thập dữ liệu đa luồng, retry và quản lý checkpointing.  
+- *AWS Lambda / ECS*: Gọi API/Crawl dữ liệu tài chính từ vnstock, TCBS, CafeF, Vietstock và xử lý backend REST API.  
+- *Amazon S3*: Lưu trữ Data Lake gồm 2 bucket (S3 raw data cho JSON/CSV và S3 curated data cho Parquet).  
+- *AWS Glue*: Glue Jobs (Python/Spark ETL) làm sạch và biến đổi dữ liệu; Glue Crawlers quét schema; Glue Data Catalog lưu trữ metadata.  
+- *Amazon Athena*: Truy vấn SQL Serverless trực tiếp trên S3 curated data với tốc độ cao.  
+- *AWS Amplify*: Hosting giao diện Web Dashboard (React/Next.js).  
+- *Amazon Cognito*: Quản lý đăng nhập, phân quyền (Admin / Guest / Analyst) và cấp JWT token.  
+- *Amazon API Gateway*: RESTful API Gateway bảo mật tiếp nhận request từ Web Frontend.  
+- *AWS WAF*: Tường lửa bảo vệ API Gateway và Amplify khỏi tấn công mạng (DDoS, SQL Injection).  
+- *Amazon SES*: Tự động gửi email cảnh báo rủi ro kiệt quệ tài chính cho người dùng.  
 
 *Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+- *Ingestion Layer*: EventBridge kích hoạt Step Functions gọi Lambda/ECS Task thu thập dữ liệu 3 BCTC (Bảng cân đối kế toán, Kết quả kinh doanh, Lưu chuyển tiền tệ) và giá cổ phiếu, loại bỏ hoàn toàn ngành tài chính (Ngân hàng, Chứng khoán, Bảo hiểm, Quỹ đầu tư).  
+- *Storage Layer*: S3 Raw lưu trữ dữ liệu gốc dạng JSON/CSV; S3 Curated lưu trữ dữ liệu đã chuẩn hóa, làm sạch và gán nhãn dạng Parquet phân theo năm/quý.  
+- *Processing & ETL Layer*: AWS Glue Job chuẩn hóa tên chỉ tiêu, lọc doanh nghiệp đủ 5 năm dữ liệu, xử lý outlier (Winsorize 1%-99%), tính bộ chỉ số tài chính (CR, WCTA, ROA, ROE, EBIT_REV, DAR, STDR, LTDR, LogAsset, MC_Debt) và gán nhãn distress.  
+- *Query & ML Layer*: Glue Crawler trích xuất schema vào Data Catalog; Athena phục vụ truy vấn ad-hoc và backend API. Mô hình Machine Learning (Logistic Regression, XGBoost, Random Forest, CatBoost) được huấn luyện trên chuỗi thời gian (Time-series split 2018-2022 train, 2023-2025 test).  
+- *User Interface & Alerting*: Amplify giao diện Dashboard trực quan; API Gateway + Lambda Backend xử lý yêu cầu; Cognito đảm bảo an toàn truy cập; SES phát thông báo cảnh báo tức thì.  
 
 ### 4. Triển khai kỹ thuật  
 *Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+Dự án được triển khai qua 4 giai đoạn chính:  
+1. *Nghiên cứu & Thiết kế Kiến trúc (Tháng 1)*: Khảo sát cấu trúc BCTC các nguồn (VCI, MAS, KBS, vnstock), định hình 5 phân vùng kiến trúc AWS Serverless và xây dựng bộ tiêu chí gán nhãn Rule-based & Z-Score.  
+2. *Xây dựng Data Pipeline & Storage (Tháng 2)*: Khởi tạo S3 Raw/Curated buckets, lập trình Lambda Crawler, thiết lập Step Functions workflow, Glue ETL Jobs và Glue Data Catalog + Athena query layer.  
+3. *Phát triển Engine Chỉ số, Gán nhãn & ML Pipeline (Tháng 3)*: Xây dựng Ratio Engine, Distress Labeling Engine, huấn luyện và đánh giá các mô hình ML (XGBoost, Random Forest) dựa trên chỉ số Recall & AUC-ROC.  
+4. *Triển khai Web Dashboard, Auth & Cảnh báo (Tháng 4)*: Phát triển giao diện React/Next.js trên Amplify, tích hợp Cognito Auth, API Gateway, Lambda Service và Amazon SES email notifications.  
 
 *Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+- *Data Engine*: Python 3.11+, `vnstock`, `pandas`, `pyarrow`, `numpy`, `scikit-learn`, `xgboost`, `lightgbm`, `catboost`.  
+- *AWS Services & Infrastructure*: AWS CDK / SAM / Terraform để quản lý Infrastructure as Code (IaC).  
+- *Backend & Web App*: FastAPI / Node.js cho Lambda Service, React / Next.js cho Frontend, Zustand cho Client State Management, Tailwind CSS / Vanilla CSS cho giao diện.  
+- *Bảo mật & Chuẩn hóa*: SSL/TLS, WAF, OAuth2 / JWT với Amazon Cognito, tuân thủ nguyên tắc Least Privilege trên IAM Roles.  
 
 ### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+- *Mốc 1 (Tháng 1)*: Hoàn thành bản đề xuất kiến trúc, chuẩn hóa schema BCTC và thiết kế dữ liệu.  
+- *Mốc 2 (Tháng 2)*: Hoàn thành Data Ingestion pipeline (Step Functions + Lambda + S3) và Glue ETL Job.  
+- *Mốc 3 (Tháng 3)*: Hoàn thành Ratio Engine, Distress Labeling (Altman Z-Score) và huấn luyện mô hình ML.  
+- *Mốc 4 (Tháng 4)*: Hoàn thiện Web Dashboard (Amplify + Cognito), API Gateway backend, tích hợp SES Alerts và kiểm thử End-to-End.  
 
 ### 6. Ước tính ngân sách  
 Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
 Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
 
 *Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+- Amazon S3 Standard (Raw & Curated 10 GB, 5.000 requests): 0,30 USD/tháng  
+- AWS Lambda (Inbound Ingestion & Backend API 50.000 requests): 0,20 USD/tháng  
+- AWS Step Functions & EventBridge: 0,10 USD/tháng  
+- AWS Glue ETL Jobs & Crawlers (chạy theo lịch theo tháng/quý): 0,80 USD/tháng  
+- Amazon Athena (Quét < 10 GB Parquet/tháng): 0,05 USD/tháng  
+- AWS Amplify & Amazon Cognito (Guest & User access): 0,35 USD/tháng  
+- Amazon API Gateway & AWS WAF: 0,15 USD/tháng  
+- Amazon SES (Email Alerts < 1.000 emails/tháng): 0,05 USD/tháng  
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+*Tổng*: ~2,00 USD/tháng (~24,00 USD/12 tháng)  
+- *Chi phí dữ liệu & phát triển*: 0 USD (tận dụng nguồn dữ liệu mở vnstock và công cụ mã nguồn mở).  
 
 ### 7. Đánh giá rủi ro  
 *Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+- Thay đổi cấu trúc API/Website nguồn (vnstock/CafeF/TCBS): Ảnh hưởng cao, xác suất trung bình.  
+- Dữ liệu BCTC khuyết thiếu hoặc bị sai lệch từ nguồn: Ảnh hưởng trung bình, xác suất cao.  
+- Lệch nhãn rủi ro (Imbalanced Dataset giữa doanh nghiệp lành mạnh và kiệt quệ): Ảnh hưởng cao, xác suất cao.  
+- Vượt ngân sách AWS do truy vấn Athena/Glue chạy không kiểm soát: Ảnh hưởng trung bình, xác suất thấp.  
 
 *Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+- Nguồn dữ liệu: Thiết lập cơ chế đa nguồn (VCI, MAS, KBS) và fallback parser tự động trong Ingestion Layer.  
+- Dữ liệu khuyết thiếu: Áp dụng bộ lọc bắt buộc 5 năm liên tục, loại bỏ ngành tài chính và dùng kỹ thuật Winsorize xử lý nhiễu.  
+- Imbalanced Dataset: Áp dụng kỹ thuật SMOTE / Class Weighting và tập trung tối ưu metric Recall đối với lớp Distress (Class 1).  
+- Chi phí AWS: Thiết lập AWS Budget Alerts, tối ưu lưu trữ Parquet có Partitioning để Athena quét tối thiểu số bytes.  
 
 *Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+- Lưu trữ bản sao Local/Parquet trên S3 để khôi phục nhanh nếu tiến trình ETL gặp sự cố.  
+- Sử dụng AWS CloudFormation / CDK để tái khởi tạo toàn bộ hạ tầng Serverless trong thời gian ngắn.  
 
 ### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+*Cải tiến kỹ thuật*: Xây dựng hệ thống Data Lake & ML Pipeline tự động hóa 100% trên AWS, thay thế hoàn toàn quy trình phân tích BCTC thủ công. Khả năng dự đoán cảnh báo sớm kiệt quệ tài chính đạt chỉ số Recall > 85% và AUC-ROC > 0.88 trên tập dữ liệu kiểm thử.  
+*Giá trị dài hạn*: Cung cấp nền tảng dữ liệu tài chính Việt Nam chuẩn hóa, sẵn sàng mở rộng cho các bài toán định giá, chấm điểm tín dụng (Credit Scoring) hoặc phân tích định lượng (Quantitative Trading) trong tương lai.

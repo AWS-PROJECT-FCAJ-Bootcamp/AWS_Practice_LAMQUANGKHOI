@@ -6,17 +6,13 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}  
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+Tại đây liệt kê và giới thiệu các bài blog kỹ thuật chia sẻ về những điểm cốt lõi quan trọng nhất trong hệ thống do nhóm mình thực hiện:
 
-Tại đây sẽ là phần liệt kê, giới thiệu các blogs mà các bạn đã đăng trên [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). Ví dụ:
+### [Blog 1 - HỆ THỐNG THU THẬP VÀ PHÂN TÍCH DỮ LIỆU TÀI CHÍNH CHỨNG KHOÁN VIỆT NAM TRÊN AWS SERVERLESS](3.1-Blog1/)
+Bài viết tổng hợp những điểm trọng tâm cốt lõi về kiến trúc hệ thống thu thập tự động 100%, làm sạch Báo cáo Tài chính, xây dựng Data Lake S3, Glue ETL, Athena SQL, bộ Engine tính toán chỉ số tài chính, tự động gán nhãn rủi ro Kiệt quệ Tài chính và hệ thống Web Dashboard / Cảnh báo qua Email (Amazon SES) do nhóm mình triển khai.
 
-###  [Blog 1 - SESSION POLICIES TRONG AMAZON EKS POD IDENTITY](3.1-Blog1/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+### [Blog 2 - TỰ ĐỘNG HÓA VÒNG ĐỜI ML VỚI AMAZON SAGEMAKER AI TRONG PHÂN TÍCH RỦI RO TÀI CHÍNH](3.2-Blog2/)
+Bài viết tổng hợp các ý quan trọng nhất về việc ứng dụng nền tảng Amazon SageMaker AI để tự động hóa vòng đời Machine Learning, quản lý tính năng trên Feature Store, thử nghiệm mô hình trong Studio, huấn luyện theo chuỗi thời gian, triển khai Serverless Endpoint và vận hành MLOps.
 
-###  [Blog 2 - ...](3.2-Blog2/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
-
-###  [Blog 3 - ...](3.3-Blog3/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+### [Blog 3 - CHUẨN HÓA DỮ LIỆU TÀI CHÍNH QUY MÔ LỚN VỚI AWS GLUE JOBS VÀ AMAZON S3 DATA LAKE](3.3-Blog3/)
+Bài viết tổng hợp các điểm cốt lõi nhất về giải pháp tích hợp dữ liệu serverless với AWS Glue Jobs, quy trình PySpark ETL, tự động khám phá Schema bằng Glue Crawlers, lọc Winsorization, nén Parquet phân vùng trên S3 Data Lake và tối ưu hóa chi phí DPU bằng Job Bookmarks.

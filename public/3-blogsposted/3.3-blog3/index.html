@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.163.3">
     <meta name="description" content="">
 <meta name="author" content="thienlh@thienlu.com">
 
-    <link rel="icon" href="/images/amazon-web-services-logo-d111.png?v=1784906802" type="image/png">
+    <link rel="icon" href="/images/amazon-web-services-logo-d111.png?v=1786103141" type="image/png">
 
     <title>Blog 3 :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784906802" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784906802" rel="stylesheet">
-    <link href="/css/hybrid.css?1784906802" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784906802" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784906802" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784906802" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784906802" rel="stylesheet">
-    <link href="/css/theme.css?1784906802" rel="stylesheet">
-    <link href="/css/tabs.css?1784906802" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784906802" rel="stylesheet">
+    <link href="/css/nucleus.css?1786103141" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1786103141" rel="stylesheet">
+    <link href="/css/hybrid.css?1786103141" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1786103141" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1786103141" rel="stylesheet">
+    <link href="/css/auto-complete.css?1786103141" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1786103141" rel="stylesheet">
+    <link href="/css/theme.css?1786103141" rel="stylesheet">
+    <link href="/css/tabs.css?1786103141" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1786103141" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784906802" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1786103141" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784906802"></script>
+    <script src="/js/jquery-3.3.1.min.js?1786103141"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -35,7 +35,7 @@
       }
       
     </style>
-    <link rel="stylesheet" href="/css/custom.css?v=1784906802">
+    <link rel="stylesheet" href="/css/custom.css?v=1786103141">
 
   </head>
   <body class="" data-url="/3-blogsposted/3.3-blog3/">
@@ -58,12 +58,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src='/js/lunr.min.js?1784906802'></script>
-<script type="text/javascript" src='/js/auto-complete.js?1784906802'></script>
+<script type="text/javascript" src='/js/lunr.min.js?1786103141'></script>
+<script type="text/javascript" src='/js/auto-complete.js?1786103141'></script>
 <script type="text/javascript">
-    var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/";
+    var baseurl = "http:\/\/localhost:1313\/";
 </script>
-<script type="text/javascript" src='/js/search.js?1784906802'></script>
+<script type="text/javascript" src='/js/search.js?1786103141'></script>
     
   </div>
   
@@ -1277,7 +1277,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#reference-sources">Reference Sources:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -1301,25 +1309,24 @@
 
 
 
-	
-<div class="notices warning" ><p>⚠️ <strong>Note:</strong> The information below is for reference purposes only. Please <strong>do not copy verbatim</strong> for your report, including this warning.</p>
-</div>
-
-<h1 id="session-policies-in-amazon-eks-pod-identity">SESSION POLICIES IN AMAZON EKS POD IDENTITY</h1>
-<p>Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.</p>
-<p>Key points to know:</p>
+	<h1 id="automating-financial-data-normalization-at-scale-with-aws-glue-jobs">AUTOMATING FINANCIAL DATA NORMALIZATION AT SCALE WITH AWS GLUE JOBS</h1>
+<p>One of the most essential components in building our team&rsquo;s data architecture was setting up an automated data integration (ETL) pipeline. Raw financial reports collected from heterogeneous providers inherently exhibit indicator naming conflicts, missing fields, and large unparsed record volumes. Our team selected AWS Glue Jobs — a powerful serverless data integration service by AWS. Here are the core key takeaways regarding financial data normalization with AWS Glue Jobs synthesized by our team:</p>
 <ul>
-<li>A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.</li>
-<li>Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.</li>
-<li>Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.</li>
-<li>Supports both same-account and cross-account (via IAM role chaining).</li>
-<li>Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.</li>
-<li>Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.</li>
+<li><strong>Automated Schema Discovery via AWS Glue Crawlers</strong>: Our team deployed Glue Crawlers to scan raw JSON/CSV files landing in our <code>S3 Raw Bucket</code>, automatically inferring schema structures for the 3 core financial statements and cataloging metadata into the AWS Glue Data Catalog.</li>
+<li><strong>Distributed Data Transformation via PySpark ETL Jobs</strong>: Our team engineered PySpark scripts on AWS Glue Jobs to standardize hundreds of multi-source indicator variations into a canonical schema (<code>total_assets</code>, <code>net_revenue</code>, <code>ebit</code>, <code>ocf</code>), while automatically filtering out specialized financial sectors (Banks, Securities, Insurance).</li>
+<li><strong>Completeness Filtering and Outlier Winsorization</strong>: Our team enforced a strict 5-year continuous dataset threshold and integrated Winsorization algorithms (1%-99%) to cap statistical outliers without distorting underlying data distributions.</li>
+<li><strong>DPU Cost Optimization via Job Bookmarks</strong>: Our team leveraged Job Bookmarks to maintain state tracking across execution runs, ensuring recurring ETL jobs process only incremental financial reports, preventing duplicate reprocessing and significantly lowering DPU expenses.</li>
+<li><strong>Snappy-Compressed Parquet Conversion and Partitioning</strong>: Cleaned outputs were converted by our team into Snappy-compressed Apache Parquet files partitioned by <code>year</code> and <code>quarter</code> inside our <code>S3 Curated Bucket</code>, slashing S3 storage footprints by 80% while boosting Amazon Athena SQL query speeds.</li>
 </ul>
-<p>This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).</p>
-<p>&hellip;Image&hellip;</p>
-<p>&hellip;Link&hellip;</p>
-<p>&hellip;Guide&hellip;</p>
+<p>Through this article, our team hopes readers gain a clear understanding of the fundamental principles behind operating AWS Glue Jobs to build an automated, cost-optimized, and scalable financial data normalization pipeline on the cloud.</p>
+<p><img src="/images/Blog_3.jpg" alt="AWS Glue Jobs ETL Architecture and S3 Data Lake Flow Diagram"></p>
+<hr>
+<h3 id="reference-sources">Reference Sources:</h3>
+<ul>
+<li><a href="https://aws.amazon.com/glue/">AWS Glue Product Homepage</a></li>
+<li><a href="https://docs.aws.amazon.com/glue/">AWS Glue Technical Documentation</a></li>
+<li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-glue-etl/welcome.html">AWS Glue ETL Best Practices Guide</a></li>
+</ul>
 
 
 
@@ -1976,19 +1983,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784906802"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784906802"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784906802"></script>
-    <script src="/js/jquery.sticky.js?1784906802"></script>
-    <script src="/js/featherlight.min.js?1784906802"></script>
-    <script src="/js/highlight.pack.js?1784906802"></script>
+    <script src="/js/clipboard.min.js?1786103141"></script>
+    <script src="/js/perfect-scrollbar.min.js?1786103141"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1786103141"></script>
+    <script src="/js/jquery.sticky.js?1786103141"></script>
+    <script src="/js/featherlight.min.js?1786103141"></script>
+    <script src="/js/highlight.pack.js?1786103141"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784906802"></script>
-    <script src="/js/learn.js?1784906802"></script>
-    <script src="/js/hugo-learn.js?1784906802"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1786103141"></script>
+    <script src="/js/learn.js?1786103141"></script>
+    <script src="/js/hugo-learn.js?1786103141"></script>
     
         
-            <script src="/mermaid/mermaid.js?1784906802"></script>
+            <script src="/mermaid/mermaid.js?1786103141"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

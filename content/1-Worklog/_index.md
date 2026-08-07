@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# WORKLOG
-
 This section records my AWS learning, research, project coordination, and development activities for the financial data lake project. Each weekly report includes the objectives, completed tasks, working dates, reference materials, and key achievements.
 
 ### Current worklog:

@@ -1,31 +1,28 @@
 ---
 title: "Blog 2"
 date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# SESSION POLICIES IN AMAZON EKS POD IDENTITY
+# AUTOMATING ML LIFECYCLE WITH AMAZON SAGEMAKER AI IN FINANCIAL RISK PREDICTION
 
-Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+Following the deployment of our financial Data Lake, the next milestone in our research journey was exploring artificial intelligence solutions for early corporate financial distress prediction. Our team selected Amazon SageMaker AI — a fully managed AWS machine learning platform designed to automate the entire end-to-end ML lifecycle. Here are the core key takeaways our team synthesized regarding the implementation of SageMaker AI:
 
-Key points to know:
+* **Centralized Feature Governance via SageMaker Feature Store**: Our team registered normalized financial ratio metrics (CR, ROA, ROE, DAR, WCTA, ...) and target distress labels from our S3 Data Lake into SageMaker Feature Store, enabling consistent feature reusability across modeling iterations.
+* **Model Experimentation in SageMaker Studio**: Utilizing SageMaker Studio and Autopilot, our team evaluated popular classification algorithms including XGBoost, Random Forest, Logistic Regression, and LightGBM to identify optimal performance on Vietnamese financial datasets.
+* **Time-Series Training and Recall Optimization**: Our team adopted a Time-Series Split strategy (2018–2022 Train, 2023–2025 Test) to prevent future data leakage. In financial distress prediction, our team prioritized optimizing the Recall metric for the distressed class (`distress = 1`) to eliminate catastrophic false negatives.
+* **Cost-Optimized Serverless Endpoint Deployment**: Our team packaged approved models into SageMaker Serverless Endpoints, allowing prediction APIs to scale automatically during Dashboard request bursts and scale down to zero when idle, cutting inference infrastructure expenses by up to 70%.
+* **Standardized MLOps Governance with Model Registry and Monitor**: Our team versioned approved models in SageMaker Model Registry and configured SageMaker Model Monitor to detect Data Drift upon new quarterly reporting releases, triggering automated retraining alerts.
 
-* A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.
-* Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.
-* Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.
-* Supports both same-account and cross-account (via IAM role chaining).
-* Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.
-* Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.
+Through this article, our team hopes to highlight the essential principles of leveraging Amazon SageMaker AI to construct an automated, standardized, and cost-optimized MLOps workflow for corporate financial risk analytics.
 
-This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).
+![Amazon SageMaker AI Training and Deployment Workflow Diagram](/images/Blog%202.drawio.png)
 
-...Image...
+---
 
-...Link...
-
-...Guide...
+### Reference Sources:
+* [Amazon SageMaker AI Official Homepage](https://aws.amazon.com/sagemaker/)
+* [AWS SageMaker Technical Documentation](https://docs.aws.amazon.com/sagemaker/)
+* [AWS Machine Learning Official Blog](https://aws.amazon.com/blogs/machine-learning/)
