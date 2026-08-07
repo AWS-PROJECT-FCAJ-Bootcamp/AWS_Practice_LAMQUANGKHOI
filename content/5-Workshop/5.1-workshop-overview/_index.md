@@ -15,41 +15,7 @@ In this project, our team designed and built an **Automated Vietnamese Securitie
 
 The system architecture consists of 5 decoupled processing layers:
 
-```mermaid
-flowchart TB
-    subgraph INGESTION["1. Ingestion Layer"]
-        EB["Amazon EventBridge (Cron Scheduler)"] --> SF["AWS Step Functions (Orchestrator)"]
-        SF --> LAM_INGEST["AWS Lambda / ECS (vnstock Ingestor)"]
-        LAM_INGEST <-->|Crawl API| EXT_DATA["Data Sources (HOSE, HNX, UPCOM)"]
-        LAM_INGEST -->|Write Raw Data| S3_RAW["Amazon S3 (raw bucket)"]
-    end
-
-    subgraph STORAGE["2. Storage Layer (Data Lake)"]
-        S3_RAW
-        S3_CURATED["Amazon S3 (curated bucket)"]
-    end
-
-    subgraph PROCESS["3. Process & Query Layer (ETL & Query)"]
-        S3_RAW -->|Read Raw| GLUE_JOB["AWS Glue Job (PySpark ETL)"]
-        GLUE_JOB -->|Write Parquet Cleaned| S3_CURATED
-        S3_CURATED -->|Scan Schema| CRAWLER["AWS Glue Crawler"]
-        CRAWLER -->|Metadata| CATALOG["AWS Glue Data Catalog"]
-        CATALOG <---> ATHENA["Amazon Athena (SQL Query)"]
-        S3_CURATED <---> ATHENA
-    end
-
-    subgraph API_AUTH["4. API & Auth Layer"]
-        COG["Amazon Cognito"] <---> APIGW["Amazon API Gateway + WAF"]
-        APIGW --> LAM_API["AWS Lambda (Backend API)"]
-        LAM_API --> ATHENA
-    end
-
-    subgraph UI_ALERT["5. UI & Alert Layer"]
-        AMP["AWS Amplify (React Dashboard)"] <--> APIGW
-        LAM_API --> LAM_SES["AWS Lambda (Email Service)"]
-        LAM_SES --> SES["Amazon SES (Email Alerts)"]
-    end
-```
+![AWS Serverless 3-Tier System Architecture](/images/3layer_v1.0.drawio.png)
 
 #### 🛠️ Core AWS Services Matrix:
 
