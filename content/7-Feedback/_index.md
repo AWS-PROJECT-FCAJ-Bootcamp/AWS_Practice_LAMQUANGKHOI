@@ -6,42 +6,34 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+# INTERNSHIP FEEDBACK & PERSPECTIVES
 
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud AI Journey program. This will help the FCAJ team improve any shortcomings based on the following aspects:
-
-### Overall Evaluation
-
-**1. Working Environment**  
-The working environment is very friendly and open. FCAJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
-
-**2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
-
-**3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
-
-**4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
-
-**5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
-
-**6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+Reflecting on our internship journey with the **First Cloud AI Journey (FCAJ)** program, I would like to sincerely share my personal reflections, constructive feedback, and key takeaways gained throughout this transformative experience:
 
 ---
 
-### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+### 1. Evaluation of Internship Process & Milestone "Stations"
+Looking back at the entire internship curriculum, I find that the working process and the structured "stations" (milestones/stages) established by FCAJ for interns are highly logical, well-organized, and essential. Each milestone served as a crucial training checkpoint, enabling us to not only consolidate theoretical knowledge but also engage directly with real-world technical scenarios.
+
+In particular, I deeply resonate with the inspiring message shared during a guest speaker session by **Speaker Hung**: *"To become a successful technology engineer and advance long-term in this career, technical skills alone are not enough; you must simultaneously build professional visibility and actively cultivate networking."* FCAJ's holistic process—combining hands-on technical project development, technical writing/blogging, and community networking—has proven the necessity of this tripod foundation for modern engineers.
 
 ---
 
-### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+### 2. Initial Challenges & Overcoming the Learning Curve
+Although mentally prepared beforehand, entering a formal enterprise environment and working with the sophisticated AWS technology ecosystem was genuinely a brand-new experience that felt initially "overwhelming". The fast-paced workflow, deep technical requirements, and high standards created a challenging learning curve.
+
+I clearly recognize that I will need more time, practice, and persistence to adapt fully to high work velocity and strengthen my problem-solving mindset. This preparation is imperative if I aim to thrive in demanding, highly competitive international technology environments in the near future.
+
+---
+
+### 3. Gratitude & Reflections on Mentors and Team Admin
+One of the most inspiring aspects of this internship was the constant support from the **Admin Team** and Mentors. The team was not only incredibly enthusiastic and approachable in guiding interns, but also demonstrated exceptional technical expertise and mastery in their respective domains.
+
+Their professional work ethic, innovative tech mindsets, and dedication served as bright role models for me to emulate and draw invaluable lessons from. Observing how the admin team navigated complex challenges inspired me to continuously strive for personal excellence.
+
+---
+
+### 4. Overall Value Gained & Personal Development Opportunities
+The internship program at FCAJ provided immense value for my personal and professional growth. Beyond absorbing cutting-edge technologies (Serverless architecture, GenAI models, Multi-agent systems), I refined essential skills in teamwork, time management, and corporate professional conduct.
+
+This experience was a fantastic opportunity to step out of my comfort zone, challenge my boundaries, and broaden my horizons. The invaluable lessons and real-world exposure gained at FCAJ will serve as a strong foundation as I continue to expand my capabilities on my future career path.
