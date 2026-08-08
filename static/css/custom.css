@@ -34,52 +34,83 @@ body {
 
 #sidebar {
     font-size: 17px;
+    background-color: #1e2a38 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-/* Shared ash-gray sidebar palette for both English and Vietnamese pages. */
-#sidebar {
-    background-color: #484c4f !important;
+/* AWS Dark Navy Sidebar Header & Logo Palette */
+#header-wrapper {
+    background-color: #26384f !important;
+    border-bottom: 1px solid #344863 !important;
+    padding: 12px 15px !important;
 }
 
-#header-wrapper {
-    background-color: #606569 !important;
-    border-bottom-color: #777d81 !important;
+#header #logo {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+    padding: 8px 0 14px 0 !important;
+    text-decoration: none !important;
+}
+
+#header #logo img {
+    max-width: 140px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    filter: brightness(0) invert(1) !important;
+    transition: transform 0.2s ease-in-out !important;
+}
+
+#header #logo img:hover {
+    transform: scale(1.04) !important;
 }
 
 .searchbox {
-    background-color: #505559 !important;
-    border-color: #7b8185 !important;
+    background-color: #1b2836 !important;
+    border: 1px solid #364b63 !important;
+    border-radius: 4px !important;
+}
+
+.searchbox input {
+    color: #ffffff !important;
+}
+
+.searchbox input::placeholder {
+    color: #94a3b8 !important;
 }
 
 #homelinks {
-    background-color: #565b5f !important;
-    border-bottom-color: #707579 !important;
+    background-color: #213144 !important;
+    border-bottom-color: #344863 !important;
 }
 
 #sidebar ul.topics > li.parent,
 #sidebar ul.topics > li.active,
 #sidebar h5.parent a {
-    background-color: #3e4245 !important;
+    background-color: #15202c !important;
 }
 
 #sidebar ul li.active > a,
 #sidebar h5.active a {
-    background-color: #d7d9da !important;
-    color: #3c4043 !important;
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
 }
 
 #sidebar a {
-    color: #eceeef;
+    color: #e2e8f0;
 }
 
 #sidebar #shortcuts h3 {
-    color: #d1a153 !important;
+    color: #f59e0b !important;
 }
 
 #sidebar hr {
-    border-bottom-color: #686d71 !important;
+    border-bottom-color: #334155 !important;
 }

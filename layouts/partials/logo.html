@@ -1,7 +1,3 @@
-<a id="logo" href='{{ cond (and (ne .Site.Params.landingPageURL nil) (gt (len .Site.Languages) 1)) .Site.Params.landingPageURL "/" }}'>
-  {{ with .Site.Params.logo }}
-    <img src="{{ . | relURL }}" alt="logo">
-  {{ else }}
-    {{ with .Site.Params.titleSeparator }}{{ else }}{{ end }}
-  {{ end }}
+<a id="logo" href='{{ "" | relLangURL }}' title="Internship Report" style="display: flex; justify-content: center; align-items: center; padding: 12px 10px; background: transparent; text-decoration: none;">
+  <img src="{{ "images/amazon-web-services-logo-d111.png" | relURL }}" alt="AWS Internship Report Logo" style="max-width: 135px; height: auto; display: block; margin: 0 auto; filter: brightness(0) invert(1);" />
 </a>
