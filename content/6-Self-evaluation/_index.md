@@ -1,39 +1,48 @@
 ---
-title: "Self-Assessment"
+title: "Self-Evaluation"
 date: 2024-01-01
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# INTERNSHIP SELF-EVALUATION REPORT
 
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
+During our 8-week internship at **FCAJ** (from **June 22, 2026** to **August 15, 2026**), I gained valuable hands-on experience exploring new platforms in the AWS technology ecosystem, experiencing the company's work environment and schedules, and learning how to organize and coordinate team tasks. All of these experiences provided deep insights into the value of self-driven learning, personal development, and the importance of connecting with an open and supportive community.
 
-In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
+When allowed by the team admins to freely choose an internship project, I chose a project I had cherished since my academic research days at university: **An automated financial data collection and reporting system** designed for specific future applications such as Machine Learning model training and financial analysis. This was a relatively challenging project as it fell outside my usual domain, but I was glad to step out of my comfort zone to test my capabilities in both self-learning and team coordination.
 
-To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
+Although I had worked on related academic projects at university before, the internship at FCAJ brought even richer lessons:
+- **Deeper knowledge of enterprise AI applications**: Understanding differences between Multi-agent systems and Single-agentic setups; methods for selecting optimal models and saving token resources; and utilizing Orchestrator services for better data control.
+- **AWS Service Ecosystem**: Gaining structured knowledge of AWS services, engineered flexibly to suit multi-scale product environments and operational requirements.
+- **Community Networking & Real-World Business Problems**: Attending networking events, connecting with peers and experts to enhance experience, and engaging with real-world enterprise problems that leave inspiring questions to solve.
+- **Discipline & Time Management**: Developing personal discipline and time management skills to strive for task completion within target deadlines.
 
-| No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---- | ---- | ------- |
-| 1   | **Professional knowledge & skills** | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
-| 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
-| 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
-| 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
-| 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
-| 10  | **Problem-solving skills**          | Identifying problems, proposing solutions, and showing creativity                                | ☐    | ✅    | ☐       |
-| 11  | **Contribution to project/team**    | Work effectiveness, innovative ideas, recognition from the team                                  | ✅    | ☐    | ☐       |
-| 12  | **Overall**                         | General evaluation of the entire internship period                                               | ✅    | ☐    | ☐       |
+---
 
-### Needs Improvement
+### Self-Evaluation Matrix
 
-* Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
-* Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+Below is my self-evaluation categorized into 4 levels: **Excellent**, **Good**, **Average**, and **Needs Early Improvement**:
+
+| No. | Evaluation Criteria | Excellent | Good | Average | Needs Early Improvement |
+| :---: | :--- | :---: | :---: | :---: | :---: |
+| 1 | **Professional Knowledge & Skills** | ☐ | ✅ | ☐ | ☐ |
+| 2 | **Ability to Learn** | ☐ | ☐ | ✅ | ☐ |
+| 3 | **Proactiveness** | ✅ | ☐ | ☐ | ☐ |
+| 4 | **Sense of Responsibility** | ✅ | ☐ | ☐ | ☐ |
+| 5 | **Discipline** | ☐ | ✅ | ☐ | ☐ |
+| 6 | **Progressive Mindset** | ✅ | ☐ | ☐ | ☐ |
+| 7 | **Communication** | ☐ | ✅ | ☐ | ☐ |
+| 8 | **Teamwork & Collaboration** | ☐ | ✅ | ☐ | ☐ |
+| 9 | **Professional Conduct** | ✅ | ☐ | ☐ | ☐ |
+| 10 | **Problem-Solving Skills** | ☐ | ☐ | ☐ | ✅ |
+| 11 | **Contribution to Project/Organization** | ☐ | ✅ | ☐ | ☐ |
+| **--** | **OVERALL EVALUATION** | **✅** | **☐** | **☐** | **☐** |
+
+---
+
+### Key Areas for Future Improvement
+
+- **Accelerating Work Pace**: Developing concrete measures to boost task execution speed and push project progress forward more aggressively.
+- **Enhancing Time & Process Awareness**: Improving awareness regarding project timelines and workflow discipline to meet the rigorous demands and pressure of a formal professional environment.
+- **Expanding Communication & Connections**: Confidently expanding networking, actively communicating, and connecting with more team members and community peers.
