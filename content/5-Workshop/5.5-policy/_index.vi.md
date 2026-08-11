@@ -21,6 +21,12 @@ Trong module này, nhóm mình hoàn thiện **UI & Alert Layer** bằng cách t
    - `REACT_APP_COGNITO_CLIENT_ID`: App Client ID.
 4. Nhấp **Save and deploy**. AWS Amplify sẽ tự động thực thi luồng CI/CD, đóng gói ứng dụng và cấp phát tên miền HTTPS cho Web Dashboard.
 
+> [!TIP]
+> 🌐 **TRANG WEB DEMO THỰC TẾ & TÀI KHOẢN THỬ NGHIỆM (LIVE DEMO & TEST ACCOUNT)**
+> * **Đường dẫn ứng dụng Web (Live URL):** [https://feature-dashboard.dgku51j8dnv70.amplifyapp.com/login](https://feature-dashboard.dgku51j8dnv70.amplifyapp.com/login)
+> * **Tài khoản thử nghiệm (Test Email):** `thoa@gmail.com`
+> * **Mật khẩu (Password):** `1111111`
+
 ---
 
 ### Bước 2: Cấu hình Amazon SES (Simple Email Service)

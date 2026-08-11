@@ -21,6 +21,12 @@ In this module, our team completes the **UI & Alert Layer** by deploying an inte
    - `REACT_APP_COGNITO_CLIENT_ID`: App Client ID.
 4. Click **Save and deploy**. AWS Amplify automatically runs CI/CD build pipelines and provisions HTTPS domains.
 
+> [!TIP]
+> 🌐 **LIVE DEMO WEB APPLICATION & TEST ACCOUNT**
+> * **Live Web Application URL:** [https://feature-dashboard.dgku51j8dnv70.amplifyapp.com/login](https://feature-dashboard.dgku51j8dnv70.amplifyapp.com/login)
+> * **Test Account Email:** `thoa@gmail.com`
+> * **Test Account Password:** `1111111`
+
 ---
 
 ### Step 2: Configure Amazon SES (Simple Email Service)

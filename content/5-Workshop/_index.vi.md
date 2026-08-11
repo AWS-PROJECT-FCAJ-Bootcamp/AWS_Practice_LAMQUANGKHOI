@@ -18,6 +18,12 @@ Kiến trúc toàn vẹn của bài lab được xây dựng dựa trên 100% d�
 * **API & Xác thực (API & Auth Layer)**: Amazon Cognito, AWS WAF, Amazon API Gateway, AWS Lambda Backend.
 * **Giao diện & Cảnh báo (Dashboard & Notification Layer)**: AWS Amplify (React/Next.js), AWS Lambda, Amazon SES.
 
+> [!IMPORTANT]
+> 🌐 **MINH CHỨNG SẢN PHẨM & TRANG WEB THỰC TẾ (LIVE DEMO WEB DASHBOARD)**
+> * **Đường dẫn ứng dụng Web (Live Demo URL):** [https://feature-dashboard.dgku51j8dnv70.amplifyapp.com/login](https://feature-dashboard.dgku51j8dnv70.amplifyapp.com/login)
+> * **Tài khoản thử nghiệm (Test Email):** `thoa@gmail.com`
+> * **Mật khẩu thử nghiệm (Test Password):** `1111111`
+
 ---
 
 ### Danh mục bài thực hành

@@ -18,6 +18,12 @@ The entire architecture is engineered using 100% cloud-native AWS Serverless ser
 * **API & Authentication Layer**: Amazon Cognito, AWS WAF, Amazon API Gateway, AWS Lambda Backend API.
 * **Frontend & Alert Layer**: AWS Amplify (React/Next.js), AWS Lambda, Amazon SES.
 
+> [!IMPORTANT]
+> 🌐 **LIVE DEMO WEB APPLICATION & PROOF OF DEPLOYMENT**
+> * **Live Web Application URL:** [https://feature-dashboard.dgku51j8dnv70.amplifyapp.com/login](https://feature-dashboard.dgku51j8dnv70.amplifyapp.com/login)
+> * **Test Account Email:** `thoa@gmail.com`
+> * **Test Account Password:** `1111111`
+
 ---
 
 ### Table of Contents
