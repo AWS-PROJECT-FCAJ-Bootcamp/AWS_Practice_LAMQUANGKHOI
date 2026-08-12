@@ -22,7 +22,8 @@ Through this article, our team hopes readers gain a clear understanding of the f
 
 ---
 
-### Reference Sources:
-* [AWS Glue Product Homepage](https://aws.amazon.com/glue/)
+### Resources & Publication Proof Links:
+* **Official Proof Post on AWS Study Group**: [Blog 3 Facebook Post Link](https://www.facebook.com/groups/660548818043427/?multi_permalinks=2239447706820189&hoisted_section_header_type=recently_seen&__cft__[0]=AZaQQCTwdniH_FyYRF3IS8R5plRqgMcF1dvSVrOXXQWj7wZSf_dI0SBxsvXbgSCw4xOWXMjYe-gYI5eFUcaSAZQkMYF28eOkHcUKjVD0ZS_ckUKKy_qWzlxLahZizAikpRApI9LGoilb0ni-80W6SRlNaO0y3ZFn7cOIGkG1Y0B2EIi2UIeXgMoFu4T_aKYLfURZ6hPQh_3GhyBiM3hJ1BR4&__cft__[1]=AZbyOOv1TrmL5ZG43c1fJABpcY9UduT8HuDlt5q5srgVo-ILnFyEx6FqOL4A_ftoAr0I-MFhNaR4Iks-g4lu8lZzZb3nkaOcTp51rnkf12oKXhaH3CB7W3IXNwerCjEQ_63HOCmZOVh7a0V4QUUt0XBv&__tn__=%2CO%2CP-R)
+* [Amazon Glue Official Homepage](https://aws.amazon.com/glue/)
 * [AWS Glue Technical Documentation](https://docs.aws.amazon.com/glue/)
 * [AWS Glue ETL Best Practices Guide](https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-glue-etl/welcome.html)

@@ -22,7 +22,8 @@ Through this article, our team hopes to highlight the essential principles of le
 
 ---
 
-### Reference Sources:
+### Resources & Publication Proof Links:
+* **Official Proof Post on AWS Study Group**: [Blog 2 Facebook Post Link](https://www.facebook.com/groups/660548818043427/?multi_permalinks=2239716780126615&hoisted_section_header_type=recently_seen&__cft__[0]=AZbmBB6YUbgWFZSvx8t5TOmBZJ1nMh71nPnTdPGW0IkydgXvVwfKeccapRPtiQDMOr9TW0B49RZWy6YwedBQwGAS6vuZ164Y2AUClXbuGF-gH184ym6-NTJh2sKKQ5-PUBzLFvcXsR3tOAr1IfdxM9Za&__tn__=%2CO%2CP-R)
 * [Amazon SageMaker AI Official Homepage](https://aws.amazon.com/sagemaker/)
 * [AWS SageMaker Technical Documentation](https://docs.aws.amazon.com/sagemaker/)
 * [AWS Machine Learning Official Blog](https://aws.amazon.com/blogs/machine-learning/)

@@ -22,7 +22,8 @@ Qua bài viết này, nhóm mình hy vọng giúp người đọc dễ dàng n�
 
 ---
 
-### Nguồn tham khảo:
+### Các đường liên kết tài nguyên & Bài đăng minh chứng:
+* **Bài đăng minh chứng chính thức trên AWS Study Group**: [Link bài đăng Blog 3 trên Facebook](https://www.facebook.com/groups/660548818043427/?multi_permalinks=2239447706820189&hoisted_section_header_type=recently_seen&__cft__[0]=AZaQQCTwdniH_FyYRF3IS8R5plRqgMcF1dvSVrOXXQWj7wZSf_dI0SBxsvXbgSCw4xOWXMjYe-gYI5eFUcaSAZQkMYF28eOkHcUKjVD0ZS_ckUKKy_qWzlxLahZizAikpRApI9LGoilb0ni-80W6SRlNaO0y3ZFn7cOIGkG1Y0B2EIi2UIeXgMoFu4T_aKYLfURZ6hPQh_3GhyBiM3hJ1BR4&__cft__[1]=AZbyOOv1TrmL5ZG43c1fJABpcY9UduT8HuDlt5q5srgVo-ILnFyEx6FqOL4A_ftoAr0I-MFhNaR4Iks-g4lu8lZzZb3nkaOcTp51rnkf12oKXhaH3CB7W3IXNwerCjEQ_63HOCmZOVh7a0V4QUUt0XBv&__tn__=%2CO%2CP-R)
 * [Trang chủ dịch vụ AWS Glue](https://aws.amazon.com/glue/)
 * [Tài liệu kỹ thuật chính thức AWS Glue Documentation](https://docs.aws.amazon.com/glue/)
 * [Hướng dẫn chuẩn AWS Glue ETL Best Practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/aws-glue-etl/welcome.html)

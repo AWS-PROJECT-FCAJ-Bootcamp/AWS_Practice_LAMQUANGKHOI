@@ -22,7 +22,8 @@ Qua bài viết này, nhóm mình hy vọng đã cung cấp những điểm cố
 
 ---
 
-### Nguồn tham khảo:
+### Các đường liên kết tài nguyên & Bài đăng minh chứng:
+* **Bài đăng minh chứng chính thức trên AWS Study Group**: [Link bài đăng Blog 2 trên Facebook](https://www.facebook.com/groups/660548818043427/?multi_permalinks=2239716780126615&hoisted_section_header_type=recently_seen&__cft__[0]=AZbmBB6YUbgWFZSvx8t5TOmBZJ1nMh71nPnTdPGW0IkydgXvVwfKeccapRPtiQDMOr9TW0B49RZWy6YwedBQwGAS6vuZ164Y2AUClXbuGF-gH184ym6-NTJh2sKKQ5-PUBzLFvcXsR3tOAr1IfdxM9Za&__tn__=%2CO%2CP-R)
 * [Trang chủ sản phẩm Amazon SageMaker AI](https://aws.amazon.com/sagemaker/)
 * [Tài liệu kỹ thuật chính thức AWS SageMaker Documentation](https://docs.aws.amazon.com/sagemaker/)
 * [Bài viết chuyên sâu AWS Machine Learning Blog](https://aws.amazon.com/blogs/machine-learning/)
