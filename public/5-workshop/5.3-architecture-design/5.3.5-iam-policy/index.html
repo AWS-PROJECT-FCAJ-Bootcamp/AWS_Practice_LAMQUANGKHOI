@@ -1,0 +1,3565 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/AWS_Practice_LAMQUANGKHOI/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS_Practice_LAMQUANGKHOI/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.163.3">
+    <meta name="description" content="">
+<meta name="author" content="thienlh@thienlu.com">
+
+    <link rel="icon" href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/images/amazon-web-services-logo-d111.png?v=1786760903" type="image/png">
+
+    <title>IAM Policy Initialization and Configuration :: Internship Report</title>
+
+    
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/nucleus.css?1786760903" rel="stylesheet">
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/fontawesome-all.min.css?1786760903" rel="stylesheet">
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/hybrid.css?1786760903" rel="stylesheet">
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/featherlight.min.css?1786760903" rel="stylesheet">
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/perfect-scrollbar.min.css?1786760903" rel="stylesheet">
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/auto-complete.css?1786760903" rel="stylesheet">
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/atom-one-dark-reasonable.css?1786760903" rel="stylesheet">
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/theme.css?1786760903" rel="stylesheet">
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/tabs.css?1786760903" rel="stylesheet">
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/hugo-theme.css?1786760903" rel="stylesheet">
+    
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/theme-blue.css?1786760903" rel="stylesheet">
+    
+    <link href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/custom.css?1786760903" rel="stylesheet">
+
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/jquery-3.3.1.min.js?1786760903"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    <link rel="stylesheet" href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/css/custom.css?v=1786760903">
+
+  </head>
+  <body class="" data-url="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.5-iam-policy/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href='http://localhost:1313/AWS_Practice_LAMQUANGKHOI/' title="Internship Report" style="display: flex; justify-content: center; align-items: center; padding: 12px 10px; background: transparent; text-decoration: none;">
+  <img src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/images/amazon-web-services-logo-d111.png" alt="AWS Internship Report Logo" style="max-width: 135px; height: auto; display: block; margin: 0 auto; filter: brightness(0) invert(1);" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder='Search...'>
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src='http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/lunr.min.js?1786760903'></script>
+<script type="text/javascript" src='http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/auto-complete.js?1786760903'></script>
+<script type="text/javascript">
+    var baseurl = "http:\/\/localhost:1313\/AWS_Practice_LAMQUANGKHOI\/";
+</script>
+<script type="text/javascript" src='http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/search.js?1786760903'></script>
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='http://localhost:1313/AWS_Practice_LAMQUANGKHOI/'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/" title="Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/">
+           <b> 1. </b> Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.1-week1/" title="Week 1 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.1-week1/">
+           <b> 1.1. </b> Week 1 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.2-week2/" title="Week 2 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.2-week2/">
+           <b> 1.2. </b> Week 2 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.3-week3/" title="Week 3 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.3-week3/">
+           <b> 1.3. </b> Week 3 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.4-week4/" title="Week 4 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.4-week4/">
+           <b> 1.4. </b> Week 4 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.5-week5/" title="Week 5 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.5-week5/">
+           <b> 1.5. </b> Week 5 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.6-week6/" title="Week 6 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.6-week6/">
+           <b> 1.6. </b> Week 6 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.7-week7/" title="Week 7 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.7-week7/">
+           <b> 1.7. </b> Week 7 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.8-week8/" title="Week 8 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.8-week8/">
+           <b> 1.8. </b> Week 8 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.9-week9/" title="Week 9 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.9-week9/">
+           <b> 1.9. </b> Week 9 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.10-week10/" title="Week 10 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.10-week10/">
+           <b> 1.10. </b> Week 10 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.11-week11/" title="Week 11 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.11-week11/">
+           <b> 1.11. </b> Week 11 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.12-week12/" title="Week 12 Worklog" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/1-worklog/1.12-week12/">
+           <b> 1.12. </b> Week 12 Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/2-proposal/" title="Proposal" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/2-proposal/">
+           <b> 2. </b> Proposal
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/3-blogsposted/" title="Blogs Posted" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/3-blogsposted/">
+           <b> 3. </b> Blogs Posted
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/3-blogsposted/3.1-blog1/" title="Blog 1" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/3-blogsposted/3.1-blog1/">
+           <b> 3.1. </b> Blog 1
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/3-blogsposted/3.2-blog2/" title="Blog 2" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/3-blogsposted/3.2-blog2/">
+           <b> 3.2. </b> Blog 2
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/3-blogsposted/3.3-blog3/" title="Blog 3" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/3-blogsposted/3.3-blog3/">
+           <b> 3.3. </b> Blog 3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/4-eventparticipated/" title="Events Participated" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/4-eventparticipated/">
+           <b> 4. </b> Events Participated
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/4-eventparticipated/4.1-event1/" title="Event 1" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/4-eventparticipated/4.1-event1/">
+           <b> 4.1. </b> Event 1
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/4-eventparticipated/4.2-event2/" title="Event 2" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/4-eventparticipated/4.2-event2/">
+           <b> 4.2. </b> Event 2
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/" title="Workshop" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/">
+           <b> 5. </b> Workshop
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/" title="Project Overview" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/">
+           <b> 5.1. </b> Project Overview
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.1-context-target-scope/" title="Background, Objectives and Scope" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.1-context-target-scope/">
+           <b> 5.1.1. </b> Background, Objectives and Scope
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.2-challenges/" title="Challenges and Difficulties" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.2-challenges/">
+           <b> 5.1.2. </b> Challenges and Difficulties
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.3-objectives/" title="Objectives" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.3-objectives/">
+           <b> 5.1.3. </b> Objectives
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.4-actors-use-cases/" title="Actors and Use Cases" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.4-actors-use-cases/">
+           <b> 5.1.4. </b> Actors and Use Cases
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.5-execution-plan/" title="Proposed Execution Plan (Starting Week 4)" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.1-overview/5.1.5-execution-plan/">
+           <b> 5.1.5. </b> Proposed Execution Plan (Starting Week 4)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.2-prerequisites/" title="Pre-project Preparation Requirements" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.2-prerequisites/">
+           <b> 5.2. </b> Pre-project Preparation Requirements
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/" title="Infrastructure Design &amp; Architecture of AWS Data Pipeline" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/">
+           <b> 5.3. </b> Infrastructure Design &amp; Architecture of AWS Data Pipeline
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.1-s3-setup/" title="S3 Initialization and Configuration" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.1-s3-setup/">
+           <b> 5.3.1. </b> S3 Initialization and Configuration
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.2-iam-setup/" title="IAM Initialization and Configuration" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.2-iam-setup/">
+           <b> 5.3.2. </b> IAM Initialization and Configuration
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.3-glue-setup/" title="Glue Initialization and Configuration" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.3-glue-setup/">
+           <b> 5.3.3. </b> Glue Initialization and Configuration
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.4-lambda-setup/" title="Lambda Initialization and Configuration" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.4-lambda-setup/">
+           <b> 5.3.4. </b> Lambda Initialization and Configuration
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.5-iam-policy/" title="IAM Policy Initialization and Configuration" class="dd-item
+        
+        active
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.5-iam-policy/">
+           <b> 5.3.5. </b> IAM Policy Initialization and Configuration
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/" title="Financial Data Stream Demo Deployment on AWS" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/">
+           <b> 5.4. </b> Financial Data Stream Demo Deployment on AWS
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.1-source-code-keys/" title="Source Code &amp; Configuration Keys" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.1-source-code-keys/">
+           <b> 5.4.1. </b> Source Code &amp; Configuration Keys
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.2-sample-data/" title="Project Sample Datasets" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.2-sample-data/">
+           <b> 5.4.2. </b> Project Sample Datasets
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.3-s3-sample-data-upload/" title="Uploading Sample Data to S3 Storage" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.3-s3-sample-data-upload/">
+           <b> 5.4.3. </b> Uploading Sample Data to S3 Storage
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.4-eventbridge-scheduling/" title="Daily Scheduling with Amazon EventBridge" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.4-eventbridge-scheduling/">
+           <b> 5.4.4. </b> Daily Scheduling with Amazon EventBridge
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.5-process-layer-glue-job/" title="PROCESS LAYER (AWS ETL GLUE JOB)" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.5-process-layer-glue-job/">
+           <b> 5.4.5. </b> PROCESS LAYER (AWS ETL GLUE JOB)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.6-catalog-query-layer/" title="CATALOG &amp; QUERY LAYER (AWS GLUE CRAWLER &amp; ATHENA)" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.6-catalog-query-layer/">
+           <b> 5.4.6. </b> CATALOG &amp; QUERY LAYER (AWS GLUE CRAWLER &amp; ATHENA)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.7-stream-testing/" title="Stream Testing from Data Source to S3 Curated" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.7-stream-testing/">
+           <b> 5.4.7. </b> Stream Testing from Data Source to S3 Curated
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.8-hosting-amplify/" title="Frontend Hosting via AWS Amplify" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.8-hosting-amplify/">
+           <b> 5.4.8. </b> Frontend Hosting via AWS Amplify
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.9-user-auth-cognito/" title="User Auth with AWS Cognito" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.9-user-auth-cognito/">
+           <b> 5.4.9. </b> User Auth with AWS Cognito
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.10-notification-layer/" title="Notification Layer (LAMBDA EMAIL &amp; AMAZON SES)" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.10-notification-layer/">
+           <b> 5.4.10. </b> Notification Layer (LAMBDA EMAIL &amp; AMAZON SES)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.11-api-auth-security-layer/" title="API, Auth &amp; Security Layer (DYNAMODB, COGNITO, API GATEWAY, WAF)" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.11-api-auth-security-layer/">
+           <b> 5.4.11. </b> API, Auth &amp; Security Layer (DYNAMODB, COGNITO, API GATEWAY, WAF)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.12-resource-cleanup/" title="Resource Clean Up Procedures" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/5.4.12-resource-cleanup/">
+           <b> 5.4.12. </b> Resource Clean Up Procedures
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/" title="Testing &amp; Cost Estimation" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/">
+           <b> 5.5. </b> Testing &amp; Cost Estimation
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/5.5.1-pricing-calculator/" title="AWS Pricing Calculator" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/5.5.1-pricing-calculator/">
+           <b> 5.5.1. </b> AWS Pricing Calculator
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/5.5.2-cloudwatch-dashboard/" title="CloudWatch Dashboard &amp; Observability" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/5.5.2-cloudwatch-dashboard/">
+           <b> 5.5.2. </b> CloudWatch Dashboard &amp; Observability
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/5.5.3-log-insights/" title="Log Insights &amp; Debugging" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/5.5.3-log-insights/">
+           <b> 5.5.3. </b> Log Insights &amp; Debugging
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/5.5.4-e2e-testing/" title="End-to-End Testing Matrix" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.5-testing-cost-estimation/5.5.4-e2e-testing/">
+           <b> 5.5.4. </b> End-to-End Testing Matrix
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.6-summary-future-work/" title="Project Summary &amp; Future Work" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.6-summary-future-work/">
+           <b> 5.6. </b> Project Summary &amp; Future Work
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/6-self-evaluation/" title="Self-Evaluation" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/6-self-evaluation/">
+           <b> 6. </b> Self-Evaluation
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/7-feedback/" title="Sharing and Feedback" class="dd-item
+        
+        
+        
+        ">
+      <a href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/7-feedback/">
+           <b> 7. </b> Sharing and Feedback
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://awsstudygroup.com"><i class='fab fa-aws'></i> AWS Study Group - Blog</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj"><i class='fab fa-facebook'></i> AWS Study Group - FB Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                      <option id="en" value="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.5-iam-policy/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                      <option id="vi" value="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/vi/5-workshop/5.3-architecture-design/5.3.5-iam-policy/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75     " />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='http://localhost:1313/AWS_Practice_LAMQUANGKHOI/'>Internship Report</a> > <a href='http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/'>Workshop</a> > <a href='http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/'>Infrastructure Design & Architecture of AWS Data Pipeline</a> > IAM Policy Initialization and Configuration
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-iam-policy-structure-categorization">1. IAM Policy Structure Categorization</a></li>
+    <li><a href="#2-category-1-developer-iam-policy">2. Category 1: Developer IAM Policy</a>
+      <ul>
+        <li><a href="#-policy-1-developerprojectaccesspolicy">📋 Policy 1: <code>DeveloperProjectAccessPolicy</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#3-category-2-service-execution-roles--inline-policies">3. Category 2: Service Execution Roles &amp; Inline Policies</a>
+      <ul>
+        <li><a href="#-role-1-aws-lambda-collector-execution-role-lambdacollectorexecutionrole-dev">🔵 Role 1: AWS Lambda Collector Execution Role (<code>LambdaCollectorExecutionRole-dev</code>)</a></li>
+        <li><a href="#-role-2-aws-glue-etl-processor-role-awsglueetlprocessorrole-dev">🟠 Role 2: AWS Glue ETL Processor Role (<code>AWSGlueETLProcessorRole-dev</code>)</a></li>
+        <li><a href="#-role-3-eventbridge-scheduler-role-eventbridgeschedulerrole-dev">🟢 Role 3: EventBridge Scheduler Role (<code>EventBridgeSchedulerRole-dev</code>)</a></li>
+        <li><a href="#-role-4-aws-lambda-email-execution-role-lambdaemailexecutionrole-dev">🟣 Role 4: AWS Lambda Email Execution Role (<code>LambdaEmailExecutionRole-dev</code>)</a></li>
+        <li><a href="#-role-5-cognito-authenticated-user-role-cognitoauthuserrole-dev">🔴 Role 5: Cognito Authenticated User Role (<code>CognitoAuthUserRole-dev</code>)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              IAM Policy Initialization and Configuration
+            </h1>
+          
+
+        
+
+
+
+	<h1 id="535-iam-policy-initialization-and-security-configuration">5.3.5. IAM Policy Initialization and Security Configuration</h1>
+<p>In the <strong>Automated Securities Financial Data Platform on AWS</strong>, IAM security permissions are engineered following the <strong>Principle of Least-Privilege</strong> and <strong>Separation of Duties</strong>.</p>
+<p>All individual AWS Account IDs and personal email addresses have been sanitized into clean <strong>Placeholders</strong> (e.g., <code>&lt;ACCOUNT_ID&gt;</code>, <code>&lt;REGION&gt;</code>, <code>&lt;VERIFIED_EMAIL&gt;</code>, <code>&lt;RAW_BUCKET_NAME&gt;</code>, <code>&lt;CURATED_BUCKET_NAME&gt;</code>) to serve as a reference architecture for deployment via Infrastructure as Code (Terraform/CloudFormation).</p>
+<hr>
+<h2 id="1-iam-policy-structure-categorization">1. IAM Policy Structure Categorization</h2>
+<p>The permission system is split into <strong>2 primary categories</strong>:</p>
+<ol>
+<li><strong>Developer User Policy</strong>: Grants permissions for engineers/developers to deploy and administer project resources via AWS Console, CLI, or Terraform.</li>
+<li><strong>Service Execution Roles &amp; Inline Policies</strong>: Grants automated execution privileges for AWS Serverless services (Lambda, Glue, EventBridge, Cognito).</li>
+</ol>
+<hr>
+<h2 id="2-category-1-developer-iam-policy">2. Category 1: Developer IAM Policy</h2>
+<h3 id="-policy-1-developerprojectaccesspolicy">📋 Policy 1: <code>DeveloperProjectAccessPolicy</code></h3>
+<ul>
+<li><strong>Target Attachment</strong>: Attached to IAM Users or Groups for deployment engineers.</li>
+<li><strong>Scope</strong>: Grants administration privileges over project resources in the specified region (<code>&lt;REGION&gt;</code>).</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3BucketLevelAccess&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:CreateBucket&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:DeleteBucket&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetBucketLocation&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetBucketPolicy&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutBucketPolicy&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:DeleteBucketPolicy&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetBucketVersioning&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutBucketVersioning&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetBucketLogging&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutBucketLogging&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetBucketNotification&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutBucketNotification&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetEncryptionConfiguration&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutEncryptionConfiguration&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetLifecycleConfiguration&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutLifecycleConfiguration&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetBucketTagging&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutBucketTagging&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:ListBucket&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:ListBucketVersions&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetBucketPublicAccessBlock&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutBucketPublicAccessBlock&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;RAW_BUCKET_NAME&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;CURATED_BUCKET_NAME&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::aws-athena-query-results-&lt;ACCOUNT_ID&gt;-&lt;REGION&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3ObjectLevelAccess&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetObject&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutObject&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:DeleteObject&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetObjectVersion&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:DeleteObjectVersion&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetObjectTagging&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutObjectTagging&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetObjectAcl&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutObjectAcl&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;RAW_BUCKET_NAME&gt;/*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;CURATED_BUCKET_NAME&gt;/*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::aws-athena-query-results-&lt;ACCOUNT_ID&gt;-&lt;REGION&gt;/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3ListAllBucketsForConsole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:ListAllMyBuckets&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetAccountPublicAccessBlock&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;LambdaFunctionManagement&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:CreateFunction&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:UpdateFunctionCode&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:UpdateFunctionConfiguration&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:DeleteFunction&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:GetFunction&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:GetFunctionConfiguration&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:ListFunctions&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:InvokeFunction&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:PublishVersion&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:CreateAlias&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:UpdateAlias&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:DeleteAlias&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:GetAlias&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:ListAliases&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:AddPermission&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:RemovePermission&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:GetPolicy&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:ListTags&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:TagResource&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:UntagResource&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:PutFunctionConcurrency&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:DeleteFunctionConcurrency&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lambda:GetFunctionConcurrency&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:lambda:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:function:financial-data-collector&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:lambda:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:function:financial-data-email&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;LambdaIAMPassRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;iam:PassRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:iam::&lt;ACCOUNT_ID&gt;:role/LambdaCollectorExecutionRole-dev&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:iam::&lt;ACCOUNT_ID&gt;:role/LambdaEmailExecutionRole-dev&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;iam:PassedToService&#34;</span>: <span style="color:#e6db74">&#34;lambda.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;GlueJobAndCrawlerManagement&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:CreateJob&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:UpdateJob&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:DeleteJob&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetJob&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetJobs&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:StartJobRun&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:StopJobRun&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetJobRun&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetJobRuns&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:BatchStopJobRun&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:CreateCrawler&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:UpdateCrawler&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:DeleteCrawler&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetCrawler&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetCrawlers&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:StartCrawler&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:StopCrawler&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetCrawlerMetrics&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:glue:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:job/ohlcv-glue-processor&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:glue:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:crawler/ohlcv-crawler&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;GlueDataCatalogManagement&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:CreateDatabase&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:UpdateDatabase&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:DeleteDatabase&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetDatabase&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetDatabases&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:CreateTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:UpdateTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:DeleteTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetTables&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:BatchDeleteTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:CreatePartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:UpdatePartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:DeletePartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetPartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetPartitions&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:BatchCreatePartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:BatchDeletePartition&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:glue:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:catalog&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:glue:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:database/financial_data_lake&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:glue:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/financial_data_lake/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;GlueIAMPassRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;iam:PassRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::&lt;ACCOUNT_ID&gt;:role/AWSGlueETLProcessorRole-dev&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;iam:PassedToService&#34;</span>: <span style="color:#e6db74">&#34;glue.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;AthenaQueryExecution&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:StartQueryExecution&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:StopQueryExecution&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:GetQueryExecution&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:GetQueryResults&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:GetQueryResultsStream&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:ListQueryExecutions&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:BatchGetQueryExecution&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:GetWorkGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:CreateWorkGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:UpdateWorkGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:DeleteWorkGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:ListWorkGroups&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;athena:GetDataCatalog&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:athena:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:workgroup/*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:athena:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:datacatalog/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;DynamoDBTableManagement&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:CreateTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:UpdateTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:DeleteTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:DescribeTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:ListTables&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:PutItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:GetItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:UpdateItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:DeleteItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:Query&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:Scan&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:dynamodb:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/Users&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:dynamodb:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/Users/index/*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:dynamodb:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/UserWatchlists&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:dynamodb:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/UserWatchlists/index/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;EventBridgeSchedulerManagement&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;scheduler:CreateSchedule&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;scheduler:UpdateSchedule&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;scheduler:DeleteSchedule&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;scheduler:GetSchedule&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;scheduler:ListSchedules&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:scheduler:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:schedule/default/daily-financial-pipeline-schedule&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;CloudWatchLogsManagement&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:DeleteLogGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:DescribeLogGroups&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:GetLogEvents&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:FilterLogEvents&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:logs:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:log-group:/aws/lambda/financial-data-collector:*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:logs:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:log-group:/aws/lambda/financial-data-email:*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:logs:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:log-group:/aws-glue/*:*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;IAMReadOnly&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;iam:GetRole&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;iam:GetRolePolicy&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;iam:ListRoles&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;iam:ListRolePolicies&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;iam:ListAttachedRolePolicies&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="3-category-2-service-execution-roles--inline-policies">3. Category 2: Service Execution Roles &amp; Inline Policies</h2>
+<h3 id="-role-1-aws-lambda-collector-execution-role-lambdacollectorexecutionrole-dev">🔵 Role 1: AWS Lambda Collector Execution Role (<code>LambdaCollectorExecutionRole-dev</code>)</h3>
+<p>Execution role for <code>financial-data-collector</code> function to write CloudWatch logs and write raw payloads to S3 Raw Bucket.</p>
+<h4 id="1a-trust-policy">1a. Trust Policy</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;LambdaAssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Service&#34;</span>: <span style="color:#e6db74">&#34;lambda.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;sts:AssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SourceAccount&#34;</span>: <span style="color:#e6db74">&#34;&lt;ACCOUNT_ID&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="1b-permission-policy-lambdacollectorpermissionpolicy">1b. Permission Policy (<code>LambdaCollectorPermissionPolicy</code>)</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;CloudWatchLogsWrite&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:PutLogEvents&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:logs:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:log-group:/aws/lambda/financial-data-collector*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3RawBucketList&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:ListBucket&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetBucketLocation&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;RAW_BUCKET_NAME&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SecureTransport&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3RawBucketPutObject&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutObject&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutObjectTagging&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;RAW_BUCKET_NAME&gt;/*&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SecureTransport&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="-role-2-aws-glue-etl-processor-role-awsglueetlprocessorrole-dev">🟠 Role 2: AWS Glue ETL Processor Role (<code>AWSGlueETLProcessorRole-dev</code>)</h3>
+<p>Execution role for PySpark Glue ETL Job to read S3 Raw, write Parquet to S3 Curated, update Data Catalog, and trigger Crawler.</p>
+<blockquote>
+<p>[!NOTE]
+Attach Managed Policy <code>arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole</code> alongside the Inline Policy below.</p>
+</blockquote>
+<h4 id="2a-trust-policy">2a. Trust Policy</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;GlueAssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Service&#34;</span>: <span style="color:#e6db74">&#34;glue.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;sts:AssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SourceAccount&#34;</span>: <span style="color:#e6db74">&#34;&lt;ACCOUNT_ID&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="2b-inline-policy-glueetlcustominlinepolicy">2b. Inline Policy (<code>GlueETLCustomInlinePolicy</code>)</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3RawBucketRead&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetObject&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetObjectVersion&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:ListBucket&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;RAW_BUCKET_NAME&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;RAW_BUCKET_NAME&gt;/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SecureTransport&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;S3CuratedBucketReadWrite&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:GetObject&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:PutObject&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:DeleteObject&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;s3:ListBucket&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;CURATED_BUCKET_NAME&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:s3:::&lt;CURATED_BUCKET_NAME&gt;/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SecureTransport&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;GlueDataCatalogReadWrite&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetDatabase&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetDatabases&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetTables&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetPartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetPartitions&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:BatchGetPartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:CreateTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:UpdateTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:DeleteTable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:CreatePartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:UpdatePartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:DeletePartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:BatchCreatePartition&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:BatchDeletePartition&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:glue:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:catalog&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:glue:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:database/financial_data_lake&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:glue:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/financial_data_lake/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;GlueStartCrawler&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:StartCrawler&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetCrawler&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;glue:GetCrawlerMetrics&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:glue:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:crawler/ohlcv-crawler&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;CloudWatchLogsWrite&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:PutLogEvents&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:logs:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:log-group:/aws-glue/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="-role-3-eventbridge-scheduler-role-eventbridgeschedulerrole-dev">🟢 Role 3: EventBridge Scheduler Role (<code>EventBridgeSchedulerRole-dev</code>)</h3>
+<p>Allows EventBridge Scheduler to trigger the Lambda Collector function on a daily cron schedule.</p>
+<h4 id="3a-trust-policy">3a. Trust Policy</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;EventBridgeSchedulerAssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Service&#34;</span>: <span style="color:#e6db74">&#34;scheduler.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;sts:AssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SourceAccount&#34;</span>: <span style="color:#e6db74">&#34;&lt;ACCOUNT_ID&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ArnLike&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SourceArn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:scheduler:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:schedule/default/daily-financial-pipeline-schedule&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="3b-permission-policy-eventbridgeschedulerpermissionpolicy">3b. Permission Policy (<code>EventBridgeSchedulerPermissionPolicy</code>)</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;InvokeLambdaCollector&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;lambda:InvokeFunction&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:lambda:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:function:financial-data-collector&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:lambda:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:function:financial-data-collector:*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="-role-4-aws-lambda-email-execution-role-lambdaemailexecutionrole-dev">🟣 Role 4: AWS Lambda Email Execution Role (<code>LambdaEmailExecutionRole-dev</code>)</h3>
+<p>Execution role for <code>financial-data-email</code> function to format and send HTML report emails via Amazon SES.</p>
+<h4 id="4a-trust-policy">4a. Trust Policy</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;LambdaEmailAssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Service&#34;</span>: <span style="color:#e6db74">&#34;lambda.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;sts:AssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SourceAccount&#34;</span>: <span style="color:#e6db74">&#34;&lt;ACCOUNT_ID&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="4b-permission-policy-lambdaemailpermissionpolicy">4b. Permission Policy (<code>LambdaEmailPermissionPolicy</code>)</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;CloudWatchLogsWrite&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogGroup&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:PutLogEvents&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:logs:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:log-group:/aws/lambda/financial-data-email*&#34;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;SESSendEmailFromVerifiedIdentity&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ses:SendEmail&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ses:SendRawEmail&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:ses:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:identity/&lt;VERIFIED_EMAIL&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SecureTransport&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringLike&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;ses:FromAddress&#34;</span>: <span style="color:#e6db74">&#34;&lt;VERIFIED_EMAIL&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="-role-5-cognito-authenticated-user-role-cognitoauthuserrole-dev">🔴 Role 5: Cognito Authenticated User Role (<code>CognitoAuthUserRole-dev</code>)</h3>
+<p>Row-level Security (<code>${cognito-identity.amazonaws.com:sub}</code>) granting authenticated Cognito users access to their own DynamoDB records.</p>
+<h4 id="5a-trust-policy">5a. Trust Policy</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;CognitoAuthenticatedAssumeRole&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Federated&#34;</span>: <span style="color:#e6db74">&#34;cognito-identity.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;sts:AssumeRoleWithWebIdentity&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;cognito-identity.amazonaws.com:aud&#34;</span>: <span style="color:#e6db74">&#34;&lt;REGION&gt;:&lt;IDENTITY_POOL_ID&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ForAnyValue:StringLike&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;cognito-identity.amazonaws.com:amr&#34;</span>: <span style="color:#e6db74">&#34;authenticated&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="5b-permission-policy-cognitoauthuserdynamodbpolicy">5b. Permission Policy (<code>CognitoAuthUserDynamoDBPolicy</code>)</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;DynamoDBUsersTableAccess&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:GetItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:PutItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:UpdateItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:Query&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:dynamodb:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/Users&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:dynamodb:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/Users/index/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ForAllValues:StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;dynamodb:LeadingKeys&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;${cognito-identity.amazonaws.com:sub}&#34;</span>
+</span></span><span style="display:flex;"><span>          ]
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SecureTransport&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;DynamoDBUserWatchlistsTableAccess&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:GetItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:PutItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:UpdateItem&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dynamodb:Query&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:dynamodb:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/UserWatchlists&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;arn:aws:dynamodb:&lt;REGION&gt;:&lt;ACCOUNT_ID&gt;:table/UserWatchlists/index/*&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ForAllValues:StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;dynamodb:LeadingKeys&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;${cognito-identity.amazonaws.com:sub}&#34;</span>
+</span></span><span style="display:flex;"><span>          ]
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Bool&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;aws:SecureTransport&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.3-architecture-design/5.3.4-lambda-setup/" title="Lambda Initialization and Configuration"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/5-workshop/5.4-demo-deployment/" title="Financial Data Stream Demo Deployment on AWS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/clipboard.min.js?1786760903"></script>
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/perfect-scrollbar.min.js?1786760903"></script>
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/perfect-scrollbar.jquery.min.js?1786760903"></script>
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/jquery.sticky.js?1786760903"></script>
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/featherlight.min.js?1786760903"></script>
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/highlight.pack.js?1786760903"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/modernizr.custom-3.6.0.js?1786760903"></script>
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/learn.js?1786760903"></script>
+    <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/js/hugo-learn.js?1786760903"></script>
+    
+        
+            <script src="http://localhost:1313/AWS_Practice_LAMQUANGKHOI/mermaid/mermaid.js?1786760903"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
